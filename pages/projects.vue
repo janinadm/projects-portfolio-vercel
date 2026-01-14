@@ -3,18 +3,18 @@
     <div class="projects-hero">
       <h1>Projects</h1>
       <p>
-        A selection of projects showcasing my skills with Vue 3, TypeScript, and modern web technologies.
+        Personal projects built to learn, showcase skills, and explore in-demand technologies. Each one solves a real problem and demonstrates clean code, thoughtful UX, and modern best practices.
       </p>
     </div>
 
     <div class="projects-grid">
-      <div v-for="project in projectsList" :key="project.id" class="project-card">
+      <div v-for="project in projectsList" :key="project.slug" class="project-card">
         <div class="project-image-placeholder">
           {{ project.icon }}
         </div>
         <div class="project-content">
           <h3>{{ project.title }}</h3>
-          <p class="problem">{{ project.problem }}</p>
+          <p class="problem">{{ project.summary }}</p>
           <p class="description">{{ project.description }}</p>
           
           <div class="technologies">
@@ -24,12 +24,16 @@
           </div>
 
           <div class="project-results">
-            <h4>Results</h4>
+            <h4>Highlights</h4>
             <ul>
-              <li v-for="result in project.results" :key="result">
+              <li v-for="result in project.highlights" :key="result">
                 {{ result }}
               </li>
             </ul>
+          </div>
+
+          <div class="view-details">
+            <NuxtLink :to="`/projects/${project.slug}`">View details →</NuxtLink>
           </div>
         </div>
       </div>
@@ -38,67 +42,13 @@
 </template>
 
 <script setup lang="ts">
+import { personalProjects, type PersonalProject } from '@/composables/projects';
+
 definePageMeta({
   layout: 'default',
 });
 
-interface Project {
-  id: number;
-  icon: string;
-  title: string;
-  problem: string;
-  description: string;
-  technologies: string[];
-  results: string[];
-}
-
-const projectsList: Project[] = [
-  {
-    id: 1,
-    icon: '📦',
-    title: 'Stock Management System',
-    problem: 'Manual stock tracking was error-prone and time-consuming.',
-    description:
-      'Built a comprehensive stock management system using Vue 3, TypeScript, and Pinia for state management. Implemented real-time updates and data visualization.',
-    technologies: ['Vue 3', 'TypeScript', 'Pinia', 'SCSS'],
-    results: [
-      'Reduced stock management time by 60%',
-      'Achieved 99.9% accuracy in inventory tracking',
-      'Decreased manual errors by 95%',
-      'Improved team productivity with intuitive UI'
-    ]
-  },
-  {
-    id: 2,
-    icon: '⚡',
-    title: 'High-Performance API Dashboard',
-    problem: 'Slow API response times affecting user experience.',
-    description:
-      'Developed a performance-optimized dashboard using Nuxt 3 with server-side rendering and smart caching strategies. Integrated AI-powered analytics.',
-    technologies: ['Nuxt 3', 'TypeScript', 'SSR', 'API Integration'],
-    results: [
-      'Page load time reduced from 8s to 1.2s',
-      'API response time improved by 70%',
-      'Increased user engagement by 45%',
-      'Better SEO performance with SSR'
-    ]
-  },
-  {
-    id: 3,
-    icon: '🛍️',
-    title: 'E-Commerce Platform',
-    problem: 'Need for a modern, scalable e-commerce solution.',
-    description:
-      'Created a full-featured e-commerce platform with Vuetify components, comprehensive testing with Vitest, and type-safe development practices.',
-    technologies: ['Vue 3', 'Vuetify', 'TypeScript', 'Vitest'],
-    results: [
-      'Shipped with 95% test coverage',
-      'Reduced bugs in production by 80%',
-      'Improved code maintainability significantly',
-      'Enhanced UX with accessible components'
-    ]
-  }
-];
+const projectsList: PersonalProject[] = personalProjects;
 </script>
 
 <style scoped lang="scss">
@@ -251,3 +201,4 @@ const projectsList: Project[] = [
   }
 }
 </style>
+

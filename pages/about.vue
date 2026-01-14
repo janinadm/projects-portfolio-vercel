@@ -4,8 +4,8 @@
       <div class="about-content">
         <h1>About Me</h1>
         <p class="intro">
-          Frontend developer passionate about creating beautiful, performant web experiences 
-          using modern technologies like Vue 3, TypeScript, and Nuxt.
+          I'm a frontend developer with hands‑on experience building product interfaces and migrating legacy systems.
+          I enjoy turning complex requirements into clear, accessible, and fast UIs using Vue 2/3, TypeScript, and Nuxt.
         </p>
       </div>
     </div>
@@ -16,28 +16,28 @@
         <div class="skill-group">
           <h3>Frontend</h3>
           <ul>
-            <li>Vue 3 &amp; Nuxt 3</li>
+            <li>Vue 2/3 &amp; Nuxt</li>
             <li>TypeScript</li>
-            <li>Vuetify Components</li>
+            <li>Pinia, Vue Router, Vuetify</li>
             <li>SCSS &amp; CSS</li>
           </ul>
         </div>
         <div class="skill-group">
-          <h3>Tools &amp; Testing</h3>
+          <h3>Tools &amp; QA</h3>
           <ul>
-            <li>Pinia State Management</li>
-            <li>Vitest &amp; Unit Testing</li>
-            <li>Git &amp; Version Control</li>
-            <li>Figma Design Tools</li>
+            <li>Scrum with Jira</li>
+            <li>Functional QA and incident reporting</li>
+            <li>Git &amp; version control</li>
+            <li>Figma &amp; interface design</li>
           </ul>
         </div>
         <div class="skill-group">
-          <h3>AI Integration</h3>
+          <h3>Services</h3>
           <ul>
-            <li>API Integration</li>
-            <li>Data Analysis Optimization</li>
-            <li>Content Optimization</li>
-            <li>Performance Enhancement</li>
+            <li>API integrations</li>
+            <li>Service creation from scratch</li>
+            <li>Debugging &amp; performance with DevTools</li>
+            <li>Best practices for performance</li>
           </ul>
         </div>
       </div>
@@ -46,28 +46,59 @@
     <section class="about-section">
       <h2>Experience</h2>
       <div class="experience-item">
-        <h3>Frontend Developer</h3>
-        <p class="role-meta">Current Role | Web Development</p>
+        <h3>eBroker · Frontend Developer</h3>
+        <p class="role-meta">Jun 2023 – Feb/Mar 2025 · Insurtech · Merlin multi‑quoting platform</p>
         <p>
-          Developing responsive, accessible web applications using Vue 3 and TypeScript. 
-          Leveraging AI tools to optimize performance and improve development workflows.
+          Worked in a Scrum team using Jira and the internal frontend framework for Merlin.
+          Handled incident triage, task writing/assignment, QA, and new feature development.
+          Highlights: tailored insurer customizations for brands like Comunidades de Occident, Asisa Salud, and Generali Autos; 
+          close collaboration with backend to align integrations and ship safely.
+        </p>
+      </div>
+      <div class="experience-item">
+        <h3>EvolMind · Frontend Engineer</h3>
+        <p class="role-meta">EdTech · Legacy migration to Vue 3 + TypeScript + Pinia</p>
+        <p>
+          Migrated pages and features from PHP/jQuery/unstructured HTML to a modern Vue 3 codebase.
+          Clear workflow with scope drafting, iterative migration, and continuous QA through internal releases.
+          Turned disorganized code into a composable, maintainable system.
+        </p>
+      </div>
+      <div class="experience-item">
+        <h3>CheckPon · Collaboration</h3>
+        <p class="role-meta">Startup · Image verification platform and commercial API</p>
+        <p>
+          Supported the platform and API development to verify images against editing or AI tampering.
+          Focused on clear endpoints, traceability, and practical UX for clients needing verifiable records.
         </p>
       </div>
     </section>
 
     <section class="about-section">
-      <h2>Approach to Development</h2>
+      <h2>How I Work</h2>
       <p>
-        I believe in writing clean, maintainable code that balances performance with developer experience. 
-        My approach combines:
+        Clean code, clear communication, and user focus. I rely on:
       </p>
       <ul class="approach-list">
-        <li>Modern component architecture with Vue 3 Composition API</li>
-        <li>Type-safe development with TypeScript</li>
-        <li>Thoughtful UI/UX design informed by user needs</li>
-        <li>Strategic AI integration for efficiency gains</li>
-        <li>Comprehensive testing and quality assurance</li>
+        <li>Component architecture with Composition API</li>
+        <li>Strict typing with TypeScript</li>
+        <li>Accessible, thoughtful UI/UX</li>
+        <li>Continuous QA and reliability</li>
+        <li>Team collaboration and product mindset</li>
       </ul>
+    </section>
+
+    <section class="about-section">
+      <h2>Beyond Work</h2>
+      <p>
+        🌍 I love immersive travel, local city events, 📚 reading, and 🎬 cinema (Tim Burton and Christopher Nolan fan; 
+        favorite movie: V for Vendetta — and during the holidays I still enjoy the classic cheesy ones).
+        💙 Ravenclaw spirit, curious and adventurous. I prefer ♟️ board games, enjoy chess, and creating a home around my people.
+      </p>
+      <p>
+        🤝 I thrive in teams and also value focused solo time. If I were an animal: a 🐬 dolphin — sometimes a 🐼 panda.
+        🏡 I care about aesthetics, interior design, and keeping things clean and organized.
+      </p>
     </section>
   </div>
 </template>
@@ -191,6 +222,8 @@ definePageMeta({
     }
   }
 }
+
+
 
 @media (max-width: 768px) {
   .about-page {

@@ -7,16 +7,15 @@
         </div>
         <div class="hero-text">
           <div class="greeting">
-            <h2>Hello, I'm Janina</h2>
+            <h2>Hi, I'm Janina</h2>
           </div>
-          <h1>Frontend Developer &amp; Designer</h1>
+          <h1>Frontend Developer focused on product</h1>
           <p>
-            I craft beautiful, performant web experiences using Vue 3, TypeScript, and modern web technologies.
-            Passionate about clean code, user experience, and leveraging AI to enhance development workflows.
+            I turn legacy code and new ideas into clean, fast, maintainable interfaces. Experienced with Vue 2/3, TypeScript and Nuxt, with a strong emphasis on quality, design, and collaborative teamwork.
           </p>
           <div class="hero-actions">
-            <NuxtLink to="/projects" class="btn btn-primary">View My Work</NuxtLink>
-            <NuxtLink to="/contact" class="btn btn-secondary">Get In Touch</NuxtLink>
+            <NuxtLink to="/projects" class="btn btn-primary">See Projects</NuxtLink>
+            <NuxtLink to="/contact" class="btn btn-secondary">Let's Talk</NuxtLink>
           </div>
         </div>
       </div>
@@ -51,20 +50,15 @@
     <section class="featured-projects">
       <h2>Featured Projects</h2>
       <div class="projects-preview">
-        <NuxtLink to="/projects" class="project-preview">
-          <div class="project-preview-image">📦</div>
-          <h3>Stock Management</h3>
-          <p>Real-time inventory tracking with Vue 3 &amp; TypeScript</p>
-        </NuxtLink>
-        <NuxtLink to="/projects" class="project-preview">
-          <div class="project-preview-image">⚡</div>
-          <h3>API Dashboard</h3>
-          <p>Performance-optimized dashboard with Nuxt 3 &amp; SSR</p>
-        </NuxtLink>
-        <NuxtLink to="/projects" class="project-preview">
-          <div class="project-preview-image">🛍️</div>
-          <h3>E-Commerce</h3>
-          <p>Full-featured platform with Vuetify &amp; Vitest</p>
+        <NuxtLink
+          v-for="project in featured"
+          :key="project.slug"
+          :to="`/projects/${project.slug}`"
+          class="project-preview"
+        >
+          <div class="project-preview-image">{{ project.icon }}</div>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.summary }}</p>
         </NuxtLink>
       </div>
       <div class="view-all">
@@ -91,6 +85,10 @@
           <strong>Testing</strong>
           <p>Vitest • Unit Testing</p>
         </div>
+        <div class="tech-item">
+          <strong>Backend (Basics)</strong>
+          <p>PHP • Laravel • API Integration</p>
+        </div>
       </div>
     </section>
 
@@ -103,7 +101,9 @@
 </template>
 
 <script setup lang="ts">
-// Page setup
+import { personalProjects } from '@/composables/projects';
+
+const featured = personalProjects;
 </script>
 
 <style scoped lang="scss">

@@ -1,0 +1,200 @@
+/* =========================
+   COMPONENTS (BEM)
+   Component styles following BEM methodology
+   ========================= */
+
+/* =========================
+   App Header
+   ========================= */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--c-bg-elevated);
+  backdrop-filter: var(--blur-md);
+  -webkit-backdrop-filter: var(--blur-md);
+  border-bottom: 1px solid var(--c-border-subtle);
+}
+
+.app-header__nav {
+  width: 100%;
+}
+
+.app-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+
+.app-header__brand {
+  flex-shrink: 0;
+}
+
+.app-header__logo {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--c-text-primary);
+  transition: color var(--transition-fast);
+}
+
+.app-header__logo:hover {
+  color: var(--c-text-primary);
+}
+
+.app-header__menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app-header__item {
+  margin: 0;
+}
+
+.app-header__link {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--c-text-secondary);
+  padding: var(--space-2) 0;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.app-header__link:hover {
+  color: var(--c-text-primary);
+}
+
+.app-header__link.router-link-active,
+.app-header__link.nuxt-link-active {
+  color: var(--c-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* =========================
+   Panel - Elevated Surface Component
+   ========================= */
+.panel {
+  background: var(--c-panel-bg);
+  border: 1px solid var(--c-panel-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-panel);
+  padding: var(--space-8) var(--space-7);
+}
+
+/* =========================
+   Card - Content Card Component
+   ========================= */
+.card {
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6) var(--space-5);
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--c-border);
+}
+
+.card__icon {
+  margin-bottom: var(--space-4);
+}
+
+.card__icon-placeholder {
+  width: 40px;
+  height: 40px;
+  background: var(--c-bg-tertiary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--c-border-subtle);
+}
+
+.card__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--c-text-primary);
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.01em;
+}
+
+.card__description {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--c-text-secondary);
+}
+
+/* =========================
+   Home Page
+   ========================= */
+.home {
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  padding-bottom: var(--space-10);
+}
+
+.home__container {
+  width: 100%;
+}
+
+/* Hero Section */
+.home__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 60vh;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.home__hero-panel {
+  width: 100%;
+}
+
+.home__title {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--c-text-primary);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.03em;
+}
+
+.home__subtitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: var(--c-text-secondary);
+  max-width: 600px;
+}
+
+/* Services Section */
+.home__services {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home__services-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--c-text-primary);
+  margin-bottom: var(--space-7);
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.home__services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-5);
+}
+
+.home__service-card {
+  height: 100%;
+}

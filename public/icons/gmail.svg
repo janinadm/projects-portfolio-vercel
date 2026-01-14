@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Bottom envelope (red) -->
+  <path d="M5,10h38c2.2,0 4,1.8 4,4v24c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V14C1,11.8 2.8,10 5,10z" fill="#EA4335"/>
+  
+  <!-- Top left triangle (blue) -->
+  <path d="M39,13L24,25 5,13" fill="#4285F4" opacity="0.9"/>
+  
+  <!-- Top triangle (yellow/green blend area) -->
+  <path d="M24,25l15-12v0.5" fill="#FBBC04"/>
+  
+  <!-- Bottom triangle (green) -->
+  <path d="M24,25l15,12" fill="#34A853"/>
+  
+  <!-- Left side -->
+  <path d="M5,13l19,12V13" fill="#4285F4" opacity="0.9"/>
+</svg>

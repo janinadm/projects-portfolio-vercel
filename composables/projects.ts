@@ -7,24 +7,29 @@ export interface PersonalProject {
   technologies: string[];
   highlights: string[];
   image?: string;
+  liveUrl?: string;
+  repoUrl?: string;
 }
 
 export const personalProjects: PersonalProject[] = [
   {
-    slug: 'saas-starter-teams-billing',
-    icon: '🧩',
-    title: 'SaaS Starter – Teams & Billing',
-    summary: 'Multi-tenant starter with auth, roles, team invites, and Stripe billing.',
+    slug: 'breviolink',
+    icon: '🔗',
+    title: 'BrevioLink',
+    summary: 'URL shortener & bio pages with analytics, auth, and Stripe subscriptions.',
     description:
-      'A pragmatic SaaS starter that demonstrates real-world patterns: email/password auth, role-based access control (RBAC), team workspaces, invitations, settings, and Stripe subscriptions. Focused on clean UX, SSR performance, and robust state management.',
-    technologies: ['Nuxt 3', 'TypeScript', 'Pinia', 'Stripe', 'Supabase/Auth', 'SCSS'],
+      'A full-featured SaaS application offering URL shortening and customizable bio pages ("link in bio"). Includes real-time click analytics, user authentication with email verification, and Stripe-powered Pro subscriptions. Built from scratch as a personal project to showcase modern frontend and backend-as-a-service patterns.',
+    technologies: ['Vue 3', 'TypeScript', 'Pinia', 'Supabase', 'Stripe', 'SCSS', 'Vercel'],
     highlights: [
-      'Role & permission model (owner/admin/member)',
-      'Team invites via email and membership management',
-      'Stripe checkout, webhooks-ready structure, and plan tiers',
-      'Optimistic UI, error states, and accessibility'
+      'Complete auth flow: signup, email verification, password recovery',
+      'URL shortening with click analytics (browser, country, referrer)',
+      'Bio Pages with themes (light/dark) and unlimited links',
+      'Stripe integration for Pro tier ($9/month)',
+      'Row Level Security (RLS) for data protection'
     ],
-    image: '/images/projects/saas-starter.png'
+    image: '/images/projects/breviolink.png',
+    liveUrl: 'https://brevio.ink',
+    repoUrl: ''
   },
   {
     slug: 'headless-ecommerce-storefront',
@@ -40,7 +45,9 @@ export const personalProjects: PersonalProject[] = [
       'Checkout integration with Stripe',
       'Lighthouse-friendly performance and a11y checks'
     ],
-    image: '/images/projects/ecommerce.png'
+    image: '/images/projects/ecommerce.png',
+    liveUrl: '',
+    repoUrl: ''
   },
   {
     slug: 'image-provenance-verifier',
@@ -56,7 +63,9 @@ export const personalProjects: PersonalProject[] = [
       'Side-by-side diff preview and reporting',
       'Shareable verification reports'
     ],
-    image: '/images/projects/image-verifier.png'
+    image: '/images/projects/image-verifier.png',
+    liveUrl: '',
+    repoUrl: ''
   },
   {
     slug: 'learning-hub-quizzes-progress',
@@ -72,6 +81,8 @@ export const personalProjects: PersonalProject[] = [
       'Admin authoring screens with validation',
       'Persisted progress and friendly empty/error states'
     ],
-    image: '/images/projects/learning-hub.png'
+    image: '/images/projects/learning-hub.png',
+    liveUrl: '',
+    repoUrl: ''
   }
 ];

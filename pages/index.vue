@@ -9,9 +9,9 @@
           <div class="greeting">
             <h2>Hi, I'm Janina</h2>
           </div>
-          <h1>Frontend Developer focused on product</h1>
+          <h1>Frontend Developer · Building products that users love</h1>
           <p>
-            I turn legacy code and new ideas into clean, fast, maintainable interfaces. Experienced with Vue 2/3, TypeScript and Nuxt, with a strong emphasis on quality, design, and collaborative teamwork.
+            I transform complex requirements into clean, accessible, and performant interfaces. Specialized in Vue 2/3, TypeScript, and Nuxt, with real production experience in insurtech, edtech, and personal SaaS projects.
           </p>
           <div class="hero-actions">
             <NuxtLink to="/projects" class="btn btn-primary">See Projects</NuxtLink>
@@ -26,23 +26,23 @@
       <div class="highlights-grid">
         <div class="highlight-card">
           <span class="icon">🎨</span>
-          <h3>UI/UX Design</h3>
-          <p>Creating intuitive, accessible interfaces with Vuetify and modern design principles.</p>
+          <h3>UI Development</h3>
+          <p>Building intuitive, accessible interfaces with Vue, Vuetify, and modern component patterns.</p>
         </div>
         <div class="highlight-card">
           <span class="icon">⚡</span>
           <h3>Performance</h3>
-          <p>Optimizing applications for speed with Nuxt 3 and strategic AI integration.</p>
+          <p>Optimizing applications for speed with Nuxt 3, lazy loading, and efficient state management.</p>
         </div>
         <div class="highlight-card">
-          <span class="icon">🧪</span>
-          <h3>Quality Assurance</h3>
-          <p>Ensuring reliability with comprehensive testing using Vitest and TypeScript.</p>
+          <span class="icon">🔄</span>
+          <h3>Legacy Migration</h3>
+          <p>Modernizing legacy code to Vue 3 + TypeScript while maintaining business continuity.</p>
         </div>
         <div class="highlight-card">
-          <span class="icon">🤖</span>
-          <h3>AI Integration</h3>
-          <p>Leveraging AI tools for enhanced efficiency and smarter solutions.</p>
+          <span class="icon">🛠️</span>
+          <h3>Full-Stack Basics</h3>
+          <p>Integrating APIs, working with Supabase/PHP backends, and deploying to Vercel.</p>
         </div>
       </div>
     </section>
@@ -50,16 +50,20 @@
     <section class="featured-projects">
       <h2>Featured Projects</h2>
       <div class="projects-preview">
-        <NuxtLink
+        <component
           v-for="project in featured"
           :key="project.slug"
-          :to="`/projects/${project.slug}`"
+          :is="project.liveUrl ? 'a' : 'NuxtLink'"
+          :to="!project.liveUrl ? `/projects/${project.slug}` : undefined"
+          :href="project.liveUrl || undefined"
           class="project-preview"
+          target="_blank"
+          rel="noopener"
         >
           <div class="project-preview-image">{{ project.icon }}</div>
           <h3>{{ project.title }}</h3>
           <p>{{ project.summary }}</p>
-        </NuxtLink>
+        </component>
       </div>
       <div class="view-all">
         <NuxtLink to="/projects">View All Projects →</NuxtLink>
@@ -86,15 +90,19 @@
           <p>Vitest • Unit Testing</p>
         </div>
         <div class="tech-item">
-          <strong>Backend (Basics)</strong>
-          <p>PHP • Laravel • API Integration</p>
+          <strong>Backend</strong>
+          <p>Supabase • PHP/Laravel • REST APIs</p>
+        </div>
+        <div class="tech-item">
+          <strong>Tools</strong>
+          <p>Git • Figma • Jira • Vitest</p>
         </div>
       </div>
     </section>
 
     <section class="cta-section">
       <h2>Ready to Start Your Project?</h2>
-      <p>Let's collaborate and create something amazing together.</p>
+      <p>Let's collaborate and build something great together.</p>
       <NuxtLink to="/contact" class="btn btn-primary">Contact Me</NuxtLink>
     </section>
   </div>

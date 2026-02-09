@@ -4,6 +4,10 @@
       <div class="icon">{{ project.icon }}</div>
       <h1>{{ project.title }}</h1>
       <p class="summary">{{ project.summary }}</p>
+      <div class="links">
+        <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" rel="noopener" class="btn primary">Live</a>
+        <a v-if="project.repoUrl" :href="project.repoUrl" target="_blank" rel="noopener" class="btn">Repo</a>
+      </div>
     </div>
 
     <div class="content">
@@ -55,6 +59,33 @@ definePageMeta({ layout: 'default' });
   .icon { font-size: 3rem; }
   h1 { color: var(--c-text-primary); margin: 0.5rem 0; }
   .summary { color: var(--c-text-secondary); }
+
+  .links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.55rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--c-border);
+    text-decoration: none;
+    color: var(--c-text-primary);
+    background: var(--c-panel-bg);
+    transition: all 0.2s ease;
+
+    &:hover { transform: translateY(-1px); }
+  }
+
+  .btn.primary {
+    background: var(--c-accent);
+    color: #fff;
+    border-color: var(--c-accent);
+  }
 }
 
 .content {

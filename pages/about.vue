@@ -32,12 +32,12 @@
           </ul>
         </div>
         <div class="skill-group">
-          <h3>Services</h3>
+          <h3>Backend &amp; Services</h3>
           <ul>
-            <li>API integrations</li>
-            <li>Service creation from scratch</li>
-            <li>Debugging &amp; performance with DevTools</li>
-            <li>Best practices for performance</li>
+            <li>Supabase (Auth, DB, RLS)</li>
+            <li>REST API integrations</li>
+            <li>PHP/Laravel basics</li>
+            <li>Vercel deployment</li>
           </ul>
         </div>
       </div>
@@ -46,30 +46,37 @@
     <section class="about-section">
       <h2>Experience</h2>
       <div class="experience-item">
-        <h3>eBroker · Frontend Developer</h3>
-        <p class="role-meta">Jun 2023 – Feb/Mar 2025 · Insurtech · Merlin multi‑quoting platform</p>
+        <h3>eBroker Insurance Technology · Frontend Developer</h3>
+        <p class="role-meta">April 2023 – February 2025 · Insurtech · Merlin multi-quoting platform</p>
         <p>
-          Worked in a Scrum team using Jira and the internal frontend framework for Merlin.
-          Handled incident triage, task writing/assignment, QA, and new feature development.
-          Highlights: tailored insurer customizations for brands like Comunidades de Occident, Asisa Salud, and Generali Autos; 
-          close collaboration with backend to align integrations and ship safely.
+          Worked in a Scrum team maintaining and enhancing a high-complexity insurance pricing tool.
+          Implemented business logic and user interfaces using Vue 2 and TypeScript.
+          Developed frontend unit tests and integrated REST APIs in close collaboration with backend teams.
         </p>
       </div>
       <div class="experience-item">
-        <h3>EvolMind · Frontend Engineer</h3>
-        <p class="role-meta">EdTech · Legacy migration to Vue 3 + TypeScript + Pinia</p>
+        <h3>CheckPon · Product Developer & UI Designer</h3>
+        <p class="role-meta">September 2025 – December 2025 · Part-time collaboration · Startup</p>
         <p>
-          Migrated pages and features from PHP/jQuery/unstructured HTML to a modern Vue 3 codebase.
-          Clear workflow with scope drafting, iterative migration, and continuous QA through internal releases.
-          Turned disorganized code into a composable, maintainable system.
+          Designed user interfaces and navigation flows for an image verification platform.
+          Collaborated with the development team on technical feasibility and created the design system and visual identity.
         </p>
       </div>
       <div class="experience-item">
-        <h3>CheckPon · Collaboration</h3>
-        <p class="role-meta">Startup · Image verification platform and commercial API</p>
+        <h3>EvolMind · Frontend Developer</h3>
+        <p class="role-meta">February 2025 – January 2026 · EdTech · Educational web platform</p>
         <p>
-          Supported the platform and API development to verify images against editing or AI tampering.
-          Focused on clear endpoints, traceability, and practical UX for clients needing verifiable records.
+          Developing and maintaining a production educational platform using Vue 3 and TypeScript.
+          Migrating legacy PHP/jQuery code to modern frontend architecture.
+          Optimizing frontend components for performance and scalability. Working within agile SCRUM environment.
+        </p>
+      </div>
+      <div class="experience-item">
+        <h3>BrevioLink · Personal SaaS Project</h3>
+        <p class="role-meta">November 2025 – Present · Side project · <a href="https://brevio.ink" target="_blank" rel="noopener">brevio.ink</a></p>
+        <p>
+          Built a complete URL shortener and bio pages SaaS from scratch. Implemented authentication with Supabase,
+          real-time analytics, Stripe subscriptions, and Row Level Security. Deployed on Vercel.
         </p>
       </div>
     </section>

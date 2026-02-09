@@ -33,7 +33,15 @@
           </div>
 
           <div class="view-details">
-            <NuxtLink :to="`/projects/${project.slug}`">View details →</NuxtLink>
+            <a
+              v-if="project.liveUrl"
+              :href="project.liveUrl"
+              target="_blank"
+              rel="noopener"
+            >
+              View live →
+            </a>
+            <NuxtLink v-else :to="`/projects/${project.slug}`">View details →</NuxtLink>
           </div>
         </div>
       </div>
@@ -184,6 +192,21 @@ const projectsList: PersonalProject[] = personalProjects;
         font-weight: bold;
       }
     }
+  }
+}
+
+.view-details {
+  margin-top: 1rem;
+  a,
+  a:visited {
+    color: var(--c-accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  a:hover,
+  a:focus {
+    transform: translateX(3px);
   }
 }
 

@@ -46,38 +46,61 @@
     <section class="about-section">
       <h2>Experience</h2>
       <div class="experience-item">
-        <h3>eBroker Insurance Technology · Frontend Developer</h3>
-        <p class="role-meta">April 2023 – February 2025 · Insurtech · Merlin multi-quoting platform</p>
-        <p>
-          Worked in a Scrum team maintaining and enhancing a high-complexity insurance pricing tool.
-          Implemented business logic and user interfaces using Vue 2 and TypeScript.
-          Developed frontend unit tests and integrated REST APIs in close collaboration with backend teams.
-        </p>
+        <div class="company-logo">
+          <img src="/images/logos/ebroker.png" alt="eBroker" onerror="this.style.display='none'" />
+          <div class="fallback-logo">EB</div>
+        </div>
+        <div class="experience-content">
+          <h3>eBroker Insurance Technology · Frontend Developer</h3>
+          <p class="role-meta">April 2023 – February 2025 · Insurtech · <a href="https://www.youtube.com/watch?v=ApEriaqkRKQ&t=2s" target="_blank" rel="noopener">Watch Merlin demo →</a></p>
+          <p>
+            Worked in a Scrum team maintaining and enhancing a high-complexity insurance pricing tool.
+            Implemented business logic and user interfaces using Vue 2 and TypeScript.
+            Developed frontend unit tests and integrated REST APIs in close collaboration with backend teams.
+          </p>
+        </div>
       </div>
       <div class="experience-item">
-        <h3>CheckPon · Product Developer & UI Designer</h3>
-        <p class="role-meta">September 2025 – December 2025 · Part-time collaboration · Startup</p>
-        <p>
-          Designed user interfaces and navigation flows for an image verification platform.
-          Collaborated with the development team on technical feasibility and created the design system and visual identity.
-        </p>
+        <div class="company-logo">
+          <img src="/images/logos/checkpon.png" alt="CheckPon" onerror="this.style.display='none'" />
+          <div class="fallback-logo">CP</div>
+        </div>
+        <div class="experience-content">
+          <h3>CheckPon · Product Developer & UI Designer</h3>
+          <p class="role-meta">September 2025 – December 2025 · Part-time · <a href="https://apps.apple.com/es/app/checkpon/id6738854080" target="_blank" rel="noopener">View on App Store →</a></p>
+          <p>
+            Designed user interfaces and navigation flows for an image verification platform.
+            Collaborated with the development team on technical feasibility and created the design system and visual identity.
+          </p>
+        </div>
       </div>
       <div class="experience-item">
-        <h3>EvolMind · Frontend Developer</h3>
-        <p class="role-meta">February 2025 – January 2026 · EdTech · Educational web platform</p>
-        <p>
-          Developing and maintaining a production educational platform using Vue 3 and TypeScript.
-          Migrating legacy PHP/jQuery code to modern frontend architecture.
-          Optimizing frontend components for performance and scalability. Working within agile SCRUM environment.
-        </p>
+        <div class="company-logo">
+          <img src="/images/logos/evolmind.png" alt="EvolMind" onerror="this.style.display='none'" />
+          <div class="fallback-logo">EM</div>
+        </div>
+        <div class="experience-content">
+          <h3>EvolMind · Frontend Developer</h3>
+          <p class="role-meta">February 2025 – January 2026 · EdTech · <a href="https://youtube.com/playlist?list=PLlRhPlWYR4GAr7bSXLf16gx8MHWgg6Oij" target="_blank" rel="noopener">View tutorials →</a></p>
+          <p>
+            Developing and maintaining a production educational platform using Vue 3 and TypeScript.
+            Migrating legacy PHP/jQuery code to modern frontend architecture.
+            Optimizing frontend components for performance and scalability. Working within agile SCRUM environment.
+          </p>
+        </div>
       </div>
       <div class="experience-item">
-        <h3>BrevioLink · Personal SaaS Project</h3>
-        <p class="role-meta">November 2025 – Present · Side project · <a href="https://brevio.ink" target="_blank" rel="noopener">brevio.ink</a></p>
-        <p>
-          Built a complete URL shortener and bio pages SaaS from scratch. Implemented authentication with Supabase,
-          real-time analytics, Stripe subscriptions, and Row Level Security. Deployed on Vercel.
-        </p>
+        <div class="company-logo">
+          <div class="fallback-logo">BL</div>
+        </div>
+        <div class="experience-content">
+          <h3>BrevioLink · Personal SaaS Project</h3>
+          <p class="role-meta">November 2025 – Present · Side project · <a href="https://brevio.ink" target="_blank" rel="noopener">brevio.ink</a></p>
+          <p>
+            Built a complete URL shortener and bio pages SaaS from scratch. Implemented authentication with Supabase,
+            real-time analytics, Stripe subscriptions, and Row Level Security. Deployed on Vercel.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -201,11 +224,67 @@ definePageMeta({
 
 .experience-item {
   margin-bottom: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
 
-  .role-meta {
-    color: var(--c-text-tertiary);
-    font-size: 0.875rem;
-    margin: 0.5rem 0 1rem 0;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.company-logo {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+
+  img {
+    width: 60%;
+    height: auto;
+    object-fit: contain;
+    z-index: 2;
+  }
+
+  .fallback-logo {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--c-panel-bg);
+    color: var(--c-accent);
+    font-weight: 700;
+    font-size: 1.25rem;
+    z-index: 1;
+  }
+}
+
+.experience-content {
+  flex: 1;
+}
+
+.role-meta {
+  color: var(--c-text-tertiary);
+  font-size: 0.875rem;
+  margin: 0.5rem 0 1rem 0;
+
+  a {
+    color: var(--c-accent);
+    text-decoration: none;
+    margin-left: 0.5rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

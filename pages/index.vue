@@ -60,7 +60,9 @@
           target="_blank"
           rel="noopener"
         >
-          <div class="project-preview-image">{{ project.icon }}</div>
+          <div class="project-preview-image" :style="project.image ? { backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}">
+            <span v-if="!project.image">{{ project.icon }}</span>
+          </div>
           <h3>{{ project.title }}</h3>
           <p>{{ project.summary }}</p>
         </component>

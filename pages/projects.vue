@@ -9,8 +9,8 @@
 
     <div class="projects-grid">
       <div v-for="project in projectsList" :key="project.slug" class="project-card">
-        <div class="project-image-placeholder">
-          {{ project.icon }}
+        <div class="project-image-placeholder" :style="project.image && project.slug === 'breviolink' ? { backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'top center' } : {}">
+          <span v-if="!project.image || project.slug !== 'breviolink'">{{ project.icon }}</span>
         </div>
         <div class="project-content">
           <h3>{{ project.title }}</h3>

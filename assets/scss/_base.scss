@@ -33,10 +33,32 @@ body {
   color: var(--c-text-primary);
   -webkit-text-size-adjust: 100%;
   min-height: 100vh;
+  position: relative;
+}
+
+/* Global atmospheric glow */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Glow dorado sutil desde la esquina superior derecha */
+  background: radial-gradient(circle at 80% 0%, var(--c-accent-subtle) 0%, transparent 70%),
+    radial-gradient(circle at 0% 100%, rgba(var(--c-bg-primary-rgb), 0) 0%, var(--c-accent-subtle) 100%);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.5;
 }
 
 /* Typography hierarchy */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);

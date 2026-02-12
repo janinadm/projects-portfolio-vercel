@@ -64,6 +64,25 @@ const projectsList: PersonalProject[] = personalProjects;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  padding-top: 8rem; /* Space for navbar */
+  position: relative;
+  padding-bottom: 8rem; /* More space for the smoother fade */
+
+  /* Fade out inferior suavizado y alargado */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh; /* Taller fade area (30% of viewport height) */
+    background: linear-gradient(to bottom, 
+      rgba(var(--c-bg-primary-rgb), 0) 0%, 
+      var(--c-bg-primary) 100%
+    );
+    pointer-events: none;
+    z-index: 10;
+  }
 }
 
 .projects-hero {

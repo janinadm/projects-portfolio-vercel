@@ -122,13 +122,28 @@
       <h2>Beyond Work</h2>
       <p>
         🌍 I love immersive travel, local city events, 📚 reading, and 🎬 cinema (Tim Burton and Christopher Nolan fan; 
-        favorite movie: V for Vendetta — and during the holidays I still enjoy the classic cheesy ones).
+        favorite movie: Contact by Robert Zemeckis — and during the holidays I still enjoy the classic cheesy ones).
         💙 Ravenclaw spirit, curious and adventurous. I prefer ♟️ board games, enjoy chess, and creating a home around my people.
       </p>
       <p>
         🤝 I thrive in teams and also value focused solo time. If I were an animal: a 🐬 dolphin — sometimes a 🐼 panda.
         🏡 I care about aesthetics, interior design, and keeping things clean and organized.
       </p>
+      
+      <div class="personal-gallery">
+        <div class="gallery-column">
+          <div class="image-wrapper">
+             <img src="/images/personal/photo1.jpg" alt="Personal photo 1" class="gallery-image" onerror="this.onerror=null;this.parentElement.classList.add('no-image');" />
+             <div class="placeholder-text">Photo 1 (Portrait)<br>/images/personal/photo1.jpg</div>
+          </div>
+        </div>
+        <div class="gallery-column">
+          <div class="image-wrapper">
+            <img src="/images/personal/photo2.jpg" alt="Personal photo 2" class="gallery-image" onerror="this.onerror=null;this.parentElement.classList.add('no-image');" />
+            <div class="placeholder-text">Photo 2 (Portrait)<br>/images/personal/photo2.jpg</div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -310,10 +325,78 @@ definePageMeta({
 }
 
 
+.personal-gallery {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  filter: grayscale(20%);
+  aspect-ratio: 3/4;
+  display: block;
+
+  &:hover {
+    transform: translateY(-5px);
+    filter: grayscale(0%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: var(--c-panel-bg);
+  min-height: 400px;
+  
+  &.no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--c-border);
+    
+    img {
+      display: none;
+    }
+    
+    .placeholder-text {
+      display: block;
+    }
+  }
+}
+
+.placeholder-text {
+  display: none;
+  text-align: center;
+  color: var(--c-text-tertiary);
+  font-family: monospace;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .personal-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 @media (max-width: 768px) {
   .about-page {
     padding: 1rem;
+    padding-top: 6rem; /* Top padding for responsive */
   }
 
   .about-hero h1 {
@@ -326,6 +409,29 @@ definePageMeta({
 
   .skills-list {
     grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.about-page {
+  position: relative;
+  padding-bottom: 8rem;
+  padding-top: 8rem; /* Add space at top for navbar */
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    background: linear-gradient(to bottom, 
+      rgba(var(--c-bg-primary-rgb), 0) 0%, 
+      var(--c-bg-primary) 100%
+    );
+    pointer-events: none;
+    z-index: 10;
   }
 }
 </style>

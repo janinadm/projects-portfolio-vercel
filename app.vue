@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <NuxtRouteAnnouncer />
-    <nav class="navbar">
+    <nav class="navbar" :class="{ 'home-nav': $route.path === '/' }">
       <div class="nav-container">
         <button class="nav-logo" @click="navigateTo('/')">
           <span class="logo-icon">
@@ -18,7 +18,7 @@
           <li><NuxtLink to="/contact" class="nav-link">Contact</NuxtLink></li>
         </ul>
         <button class="theme-toggle" @click="toggleTheme" :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
-          <img v-if="isDark" src="/icons/sun.svg" alt="Light mode" class="theme-icon" />
+          <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
           <FontAwesomeIcon v-else :icon="['fas','moon']" />
         </button>
       </div>
@@ -64,7 +64,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-const isDark = ref(false)
+const isDark = ref(true) // Default to true (Dark Mode)
 const showWelcomeDialog = ref(false)
 const showBadge = ref(true)
 
@@ -90,7 +90,8 @@ const navigateTo = (path: string) => {
 }
 
 onMounted(() => {
-  const theme = localStorage.getItem('theme') || 'light'
+  // Check local storage, default to 'dark' if not found
+  const theme = localStorage.getItem('theme') || 'dark'
   isDark.value = theme === 'dark'
   document.documentElement.setAttribute('data-theme', theme)
 })
@@ -127,6 +128,29 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: all 0.3s ease;
+  
+  &.home-nav {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    border-bottom: none;
+    position: absolute;
+    width: 100%;
+    padding-top: 1rem;
+    
+    .nav-logo {
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      
+      &:hover, &.router-link-active {
+        color: var(--c-accent);
+      }
+    }
+  }
 }
 
 .nav-container {
@@ -177,7 +201,7 @@ body {
     perspective: 1000px;
     transform-style: preserve-3d;
     position: relative;
-
+    
     .nav-logo:hover & {
       transform: rotateX(10deg) rotateY(-10deg);
       box-shadow: 0 8px 24px rgba(214, 76, 143, 0.5);
@@ -315,9 +339,10 @@ body {
 
 // Footer Styles
 .footer {
-  background: var(--c-panel-bg);
-  border-top: 1px solid var(--c-border);
-  margin-top: 4rem;
+  background: transparent;
+  border-top: none;
+  margin-top: 0;
+  padding-top: 2rem;
 }
 
 .footer-content {
@@ -350,7 +375,7 @@ body {
   }
 }
 
-/* Welcome Dialog Styles */
+// Welcome Dialog Styles
 .dialog-overlay {
   position: fixed;
   inset: 0;
@@ -364,15 +389,16 @@ body {
 }
 
 .dialog-content {
-  background: var(--c-bg-primary);
-  border-radius: 12px;
-  padding: 2rem;
-  max-width: 450px;
-  width: 90%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  position: relative;
-  animation: slideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: var(--c-panel-bg);
   border: 1px solid var(--c-border);
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 480px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  transform-origin: center;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .dialog-close {
@@ -381,66 +407,57 @@ body {
   right: 1rem;
   background: none;
   border: none;
-  color: var(--c-text-secondary);
   font-size: 1.25rem;
+  color: var(--c-text-tertiary);
   cursor: pointer;
-  transition: color 0.2s ease;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0.25rem;
+  transition: all 0.2s ease;
 
   &:hover {
     color: var(--c-accent);
+    transform: rotate(90deg);
   }
 }
 
-.dialog-header {
+.dialog-header h2 {
+  font-size: 1.75rem;
   margin-bottom: 1rem;
-
-  h2 {
-    font-size: 1.75rem;
-    color: var(--c-text-primary);
-    margin: 0;
-  }
+  color: var(--c-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .dialog-body {
+  color: var(--c-text-secondary);
+  line-height: 1.6;
   margin-bottom: 1.5rem;
 
   p {
-    font-size: 0.95rem;
-    color: var(--c-text-secondary);
-    line-height: 1.6;
-    margin: 0 0 0.75rem 0;
+    margin-bottom: 1rem;
+  }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    strong {
-      color: var(--c-accent);
-      font-weight: 600;
-    }
+  strong {
+    color: var(--c-accent);
   }
 }
 
 .dialog-action {
   width: 100%;
-  padding: 0.85rem;
+  padding: 0.875rem;
   background: linear-gradient(135deg, var(--c-accent) 0%, var(--c-accent-hover) 100%);
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 0.95rem;
+  border-radius: 8px;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(214, 76, 143, 0.3);
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(214, 76, 143, 0.4);
+    box-shadow: 0 6px 16px rgba(214, 76, 143, 0.4);
   }
 
   &:active {
@@ -449,26 +466,21 @@ body {
 }
 
 @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
   from {
     opacity: 0;
+    transform: scale(0.9);
   }
   to {
     opacity: 1;
+    transform: scale(1);
   }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-// Responsive
 @media (max-width: 768px) {
   .nav-container {
     padding: 1rem;
@@ -476,39 +488,16 @@ body {
 
   .nav-menu {
     gap: 1rem;
-    font-size: 0.9rem;
-  }
 
-  .nav-logo {
-    font-size: 1.25rem;
+    .nav-link {
+      font-size: 0.9rem;
+    }
   }
-
-  .dialog-content {
-    padding: 1.5rem;
-  }
-
-  .dialog-header h2 {
-    font-size: 1.5rem;
-  }
-
-  .dialog-body p {
-    font-size: 0.95rem;
-  }
-
+  
   .footer-content {
     flex-direction: column;
+    gap: 1.5rem;
     text-align: center;
-    gap: 1rem;
-  }
-}
-
-// Link styles for NuxtLink
-a {
-  color: var(--c-accent);
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
   }
 }
 </style>

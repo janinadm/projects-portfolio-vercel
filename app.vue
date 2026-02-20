@@ -605,7 +605,7 @@ onMounted(() => {
     inset: 0 !important;
     width: 100% !important;
     height: 100dvh !important; /* Use dynamic viewport unit */
-    background: rgba(0, 0, 0, 0.85) !important; /* Premium "dark frost" transparency */
+    background: rgba(0, 0, 0, 0.7) !important; /* Lighter "dark frost" transparency */
     backdrop-filter: blur(100px) saturate(200%) !important; /* Extreme blur for focus */
     -webkit-backdrop-filter: blur(100px) saturate(200%) !important;
     flex-direction: column;

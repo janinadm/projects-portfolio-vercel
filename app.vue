@@ -167,6 +167,7 @@ onMounted(() => {
   transition: all 0.4s ease;
 
   &.menu-open {
+    transition: none !important; /* Make transition instant on open */
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -627,16 +628,6 @@ onMounted(() => {
     z-index: 9999 !important;
     padding: 2rem;
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
-    
-    /* Ambient Glow for Premium Feel */
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--mesh-gold);
-      opacity: 0.15;
-      pointer-events: none;
-    }
 
     &.is-open {
       visibility: visible !important;

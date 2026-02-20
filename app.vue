@@ -598,12 +598,13 @@ onMounted(() => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    display: none;
-    opacity: 0;
+    display: flex !important; /* Always flex but hidden via transform */
+    opacity: 1 !important; /* No fade, just slide */
+    transform: translateY(-100%);
     visibility: hidden;
     z-index: 9999 !important;
     padding: 2rem;
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
     
     /* Ambient Glow for Premium Feel */
     &::before {
@@ -616,9 +617,8 @@ onMounted(() => {
     }
 
     &.is-open {
-      display: flex !important;
-      opacity: 1 !important;
       visibility: visible !important;
+      transform: translateY(0);
       
       li {
         opacity: 1;

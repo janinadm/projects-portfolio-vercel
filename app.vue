@@ -49,11 +49,11 @@
       </div>
     </nav>
 
-    <main class="main-content">
+    <main class="main-content" :class="{ 'is-blurred': isMenuOpen }">
       <NuxtPage />
     </main>
 
-    <footer class="footer">
+    <footer class="footer" :class="{ 'is-blurred': isMenuOpen }">
       <div class="footer-content">
         <p>{{ $t('footer.rights') }}</p>
         <div class="footer-links">
@@ -88,10 +88,11 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const { locale, locales, setLocale, t } = useI18n()
 const route = useRoute()
+const router = useRouter()
 
 const isDark = ref(true)
 const showWelcomeDialog = ref(false)
@@ -135,7 +136,7 @@ const closeWelcomeDialog = () => {
 }
 
 const navigateTo = (path: string) => {
-  useRouter().push(path)
+  router.push(path)
 }
 
 onMounted(() => {
@@ -147,7 +148,6 @@ onMounted(() => {
 
 <style lang="scss">
 @use './assets/scss/main.scss';
-
 
 .app {
   display: flex;
@@ -430,6 +430,12 @@ onMounted(() => {
 .main-content {
   flex: 1;
   padding: 0;
+  transition: filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  &.is-blurred {
+    filter: blur(12px);
+    pointer-events: none;
+  }
 }
 
 // Footer Styles
@@ -438,7 +444,12 @@ onMounted(() => {
   border-top: 1px solid var(--glass-border);
   margin-top: 0;
   padding-top: 2rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  &.is-blurred {
+    filter: blur(12px);
+    pointer-events: none;
+  }
 }
 
 .footer-content {
@@ -591,12 +602,9 @@ onMounted(() => {
 
   .nav-menu {
     position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
+    inset: 0 !important;
     width: 100% !important;
-    height: 100vh !important;
+    height: 100dvh !important; /* Use dynamic viewport unit */
     background: rgba(0, 0, 0, 0.85) !important; /* Premium "dark frost" transparency */
     backdrop-filter: blur(100px) saturate(200%) !important; /* Extreme blur for focus */
     -webkit-backdrop-filter: blur(100px) saturate(200%) !important;
@@ -693,48 +701,8 @@ onMounted(() => {
     }
   }
 
-  .hamburger {
-    width: 24px;
-    height: 2px;
-    background: var(--c-text-primary);
-    position: relative;
-    transition: all 0.3s ease;
-
-    &::before, &::after {
-      content: '';
-      position: absolute;
-      width: 24px;
-      height: 2px;
-      background: var(--c-text-primary);
-      transition: all 0.3s ease;
-    }
-
-    &::before { top: -8px; }
-    &::after { bottom: -8px; }
-
-    &.is-active {
-      background: transparent;
-      &::before { transform: rotate(45deg); top: 0; }
-      &::after { transform: rotate(-45deg); bottom: 0; }
-    }
-  }
-  
-  .footer-content {
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: center;
+  .nav-logo {
+    z-index: 10000;
   }
 }
-
-/* Extra small devices fix */
-@media (max-width: 380px) {
-  .nav-actions {
-    gap: 0.5rem;
-  }
-  
-  .logo-icon {
-    font-size: 1rem;
-  }
-}
-
 </style>

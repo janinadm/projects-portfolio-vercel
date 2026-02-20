@@ -19,10 +19,10 @@
         </ul>
 
         <div class="nav-actions">
-          <button class="lang-toggle" @click="toggleLocale" :title="currentLocaleName">
+          <button v-show="!isMenuOpen" class="lang-toggle" @click="toggleLocale" :title="currentLocaleName">
             {{ locale === 'en' ? 'ES' : 'EN' }}
           </button>
-          <button class="theme-toggle" @click="toggleTheme" :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+          <button v-show="!isMenuOpen" class="theme-toggle" @click="toggleTheme" :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
             <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             <FontAwesomeIcon v-else :icon="['fas','moon']" />
           </button>
@@ -570,27 +570,26 @@ onMounted(() => {
   }
 
   .nav-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--c-bg-primary); /* Use solid background for clarity */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 100vh !important;
+    background-color: var(--c-bg-primary) !important; /* Force solid color */
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    display: none; /* Hide by default on mobile */
+    display: none;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-20px);
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    z-index: 10000 !important; /* Overlay everything */
+    padding: 2rem;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 
     &.is-open {
-      display: flex; /* Show only when open */
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
     }
 
     .nav-link {
@@ -603,13 +602,15 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 110;
+    z-index: 10001 !important; /* Above the menu itself */
+    color: var(--c-text-primary);
+    font-size: 1.5rem;
   }
 
   .hamburger {

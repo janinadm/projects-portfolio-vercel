@@ -12,10 +12,25 @@
           </span>
         </button>
         <ul class="nav-menu" :class="{ 'is-open': isMenuOpen }">
-          <li><NuxtLink to="/" class="nav-link" @click="isMenuOpen = false">{{ t('nav.home') }}</NuxtLink></li>
-          <li><NuxtLink to="/about" class="nav-link" @click="isMenuOpen = false">{{ t('nav.about') }}</NuxtLink></li>
-          <li><NuxtLink to="/projects" class="nav-link" @click="isMenuOpen = false">{{ t('nav.projects') }}</NuxtLink></li>
-          <li><NuxtLink to="/contact" class="nav-link" @click="isMenuOpen = false">{{ t('nav.contact') }}</NuxtLink></li>
+          <li v-for="(link, index) in [
+            { to: '/', label: 'nav.home' },
+            { to: '/about', label: 'nav.about' },
+            { to: '/projects', label: 'nav.projects' },
+            { to: '/contact', label: 'nav.contact' }
+          ]" :key="link.to" :style="{ '--index': index }">
+            <NuxtLink :to="link.to" class="nav-link" @click="isMenuOpen = false">{{ t(link.label) }}</NuxtLink>
+          </li>
+          
+          <!-- Integrated Toggles for Mobile -->
+          <li class="mobile-settings" :style="{ '--index': 4 }">
+            <button class="lang-toggle" @click="toggleLocale" :title="currentLocaleName">
+              {{ locale === 'en' ? 'ES' : 'EN' }}
+            </button>
+            <button class="theme-toggle" @click="toggleTheme" :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+              <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+              <FontAwesomeIcon v-else :icon="['fas','moon']" />
+            </button>
+          </li>
         </ul>
 
         <div class="nav-actions">
@@ -574,27 +589,81 @@ onMounted(() => {
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
     height: 100vh !important;
-    background-color: var(--c-bg-primary) !important; /* Force solid color */
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(40px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     display: none;
     opacity: 0;
     visibility: hidden;
-    z-index: 10000 !important; /* Overlay everything */
+    z-index: 9999 !important;
     padding: 2rem;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+    
+    /* Ambient Glow for Premium Feel */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--mesh-gold);
+      opacity: 0.15;
+      pointer-events: none;
+    }
 
     &.is-open {
       display: flex !important;
       opacity: 1 !important;
       visibility: visible !important;
+      
+      li {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    li {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: calc(var(--index) * 0.1s);
+      width: 100%;
+      text-align: center;
     }
 
     .nav-link {
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--c-text-primary);
+      display: block;
+      padding: 1rem;
+      
+      &.router-link-active {
+        color: var(--c-accent);
+        &::after { display: none; }
+      }
+    }
+
+    .mobile-settings {
+      margin-top: 4rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--c-border);
+      max-width: 280px;
+      margin-left: auto;
+      margin-right: auto;
+
+      .lang-toggle, .theme-toggle {
+        display: flex !important;
+        transform: scale(1.3);
+      }
     }
   }
 
@@ -602,15 +671,22 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    background: none;
-    border: none;
+    width: 48px;
+    height: 48px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-full);
     cursor: pointer;
-    padding: 0;
-    z-index: 10001 !important; /* Above the menu itself */
+    z-index: 10000 !important;
     color: var(--c-text-primary);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+      background: var(--c-surface-hover);
+      transform: scale(1.05);
+    }
   }
 
   .hamburger {

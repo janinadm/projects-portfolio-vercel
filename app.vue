@@ -1,7 +1,7 @@
 <template>
-  <div class="app">
+  <div class="app" :class="{ 'no-scroll': isMenuOpen }">
     <NuxtRouteAnnouncer />
-    <nav class="navbar" :class="{ 'home-nav': $route.path === '/' }">
+    <nav class="navbar" :class="{ 'home-nav': $route.path === '/', 'menu-open': isMenuOpen }">
       <div class="nav-container">
         <button class="nav-logo" @click="navigateTo('/')">
           <span class="logo-icon">
@@ -153,6 +153,11 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  
+  &.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
 }
 
 // Navigation Styles
@@ -163,8 +168,18 @@ onMounted(() => {
   border-bottom: 1px solid var(--glass-border);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 10000; /* Increased to stay above content but behind menu */
   transition: all 0.4s ease;
+
+  &.menu-open {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: transparent !important;
+    border-bottom: none !important;
+    backdrop-filter: none !important;
+  }
   
   &.home-nav {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);

@@ -34,22 +34,6 @@
     <section class="about-section reveal">
       <h2>{{ $t('about.experience') }}</h2>
       
-      <!-- EvolMind -->
-      <div class="experience-item">
-        <div class="company-logo">
-          <img src="/images/logos/evolmind.png" alt="EvolMind" onerror="this.style.display='none'" />
-          <div class="fallback-logo">EM</div>
-        </div>
-        <div class="experience-content">
-          <h3>{{ $t('about.evolmindTitle') }}</h3>
-          <p class="role-meta">
-            {{ $t('about.evolmindMeta') }} · 
-            <a href="https://youtube.com/playlist?list=PLlRhPlWYR4GAr7bSXLf16gx8MHWgg6Oij" target="_blank" rel="noopener">{{ $t('about.evolmindLink') }}</a>
-          </p>
-          <p>{{ $t('about.evolmindDesc') }}</p>
-        </div>
-      </div>
-
       <!-- eBroker -->
       <div class="experience-item">
         <div class="company-logo">
@@ -63,6 +47,22 @@
             <a href="https://www.youtube.com/watch?v=ApEriaqkRKQ&t=2s" target="_blank" rel="noopener">{{ $t('about.ebrokerDemo') }}</a>
           </p>
           <p>{{ $t('about.ebrokerDesc') }}</p>
+        </div>
+      </div>
+
+      <!-- EvolMind -->
+      <div class="experience-item">
+        <div class="company-logo">
+          <img src="/images/logos/evolmind.png" alt="EvolMind" onerror="this.style.display='none'" />
+          <div class="fallback-logo">EM</div>
+        </div>
+        <div class="experience-content">
+          <h3>{{ $t('about.evolmindTitle') }}</h3>
+          <p class="role-meta">
+            {{ $t('about.evolmindMeta') }} · 
+            <a href="https://youtube.com/playlist?list=PLlRhPlWYR4GAr7bSXLf16gx8MHWgg6Oij" target="_blank" rel="noopener">{{ $t('about.evolmindLink') }}</a>
+          </p>
+          <p>{{ $t('about.evolmindDesc') }}</p>
         </div>
       </div>
 

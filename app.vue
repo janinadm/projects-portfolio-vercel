@@ -11,12 +11,13 @@
             </button>
           </span>
         </button>
-        <ul class="nav-menu">
-          <li><NuxtLink to="/" class="nav-link">{{ $t('nav.home') }}</NuxtLink></li>
-          <li><NuxtLink to="/about" class="nav-link">{{ $t('nav.about') }}</NuxtLink></li>
-          <li><NuxtLink to="/projects" class="nav-link">{{ $t('nav.projects') }}</NuxtLink></li>
-          <li><NuxtLink to="/contact" class="nav-link">{{ $t('nav.contact') }}</NuxtLink></li>
+        <ul class="nav-menu" :class="{ 'is-open': isMenuOpen }">
+          <li><NuxtLink to="/" class="nav-link" @click="isMenuOpen = false">{{ t('nav.home') }}</NuxtLink></li>
+          <li><NuxtLink to="/about" class="nav-link" @click="isMenuOpen = false">{{ t('nav.about') }}</NuxtLink></li>
+          <li><NuxtLink to="/projects" class="nav-link" @click="isMenuOpen = false">{{ t('nav.projects') }}</NuxtLink></li>
+          <li><NuxtLink to="/contact" class="nav-link" @click="isMenuOpen = false">{{ t('nav.contact') }}</NuxtLink></li>
         </ul>
+
         <div class="nav-actions">
           <button class="lang-toggle" @click="toggleLocale" :title="currentLocaleName">
             {{ locale === 'en' ? 'ES' : 'EN' }}
@@ -24,6 +25,10 @@
           <button class="theme-toggle" @click="toggleTheme" :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
             <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             <FontAwesomeIcon v-else :icon="['fas','moon']" />
+          </button>
+          
+          <button class="mobile-menu-toggle" @click="toggleMenu" :aria-expanded="isMenuOpen" aria-label="Toggle menu">
+            <span class="hamburger" :class="{ 'is-active': isMenuOpen }"></span>
           </button>
         </div>
       </div>
@@ -67,17 +72,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
-const { locale, locales, setLocale } = useI18n()
+const { locale, locales, setLocale, t } = useI18n()
+const route = useRoute()
 
 const isDark = ref(true)
 const showWelcomeDialog = ref(false)
 const showBadge = ref(true)
+const isMenuOpen = ref(false)
 
 const currentLocaleName = computed(() => {
   const loc = (locales.value as Array<{ code: string; name: string }>).find(l => l.code === locale.value)
   return loc?.name || locale.value
+})
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+// Close menu on route change
+watch(() => route.path, () => {
+  isMenuOpen.value = false
 })
 
 const toggleLocale = () => {
@@ -543,16 +560,82 @@ onMounted(() => {
   }
 }
 
+.mobile-menu-toggle {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .nav-container {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
   }
 
   .nav-menu {
-    gap: 1rem;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--c-bg-primary);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
 
     .nav-link {
-      font-size: 0.9rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 110;
+  }
+
+  .hamburger {
+    width: 24px;
+    height: 2px;
+    background: var(--c-text-primary);
+    position: relative;
+    transition: all 0.3s ease;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background: var(--c-text-primary);
+      transition: all 0.3s ease;
+    }
+
+    &::before { top: -8px; }
+    &::after { bottom: -8px; }
+
+    &.is-active {
+      background: transparent;
+      &::before { transform: rotate(45deg); top: 0; }
+      &::after { transform: rotate(-45deg); bottom: 0; }
     }
   }
   
@@ -562,4 +645,16 @@ onMounted(() => {
     text-align: center;
   }
 }
+
+/* Extra small devices fix */
+@media (max-width: 380px) {
+  .nav-actions {
+    gap: 0.5rem;
+  }
+  
+  .logo-icon {
+    font-size: 1rem;
+  }
+}
+
 </style>

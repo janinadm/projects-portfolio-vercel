@@ -1,5 +1,5 @@
 <template>
-  <div class="app" :class="{ 'no-scroll': isMenuOpen }">
+  <div class="app">
     <NuxtRouteAnnouncer />
     <nav class="navbar" :class="{ 'home-nav': $route.path === '/', 'menu-open': isMenuOpen }">
       <div class="nav-container">
@@ -153,11 +153,6 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  
-  &.no-scroll {
-    overflow: hidden;
-    height: 100vh;
-  }
 }
 
 // Navigation Styles

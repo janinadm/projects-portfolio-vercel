@@ -28,7 +28,7 @@
           </button>
           
           <button class="mobile-menu-toggle" @click="toggleMenu" :aria-expanded="isMenuOpen" aria-label="Toggle menu">
-            <span class="hamburger" :class="{ 'is-active': isMenuOpen }"></span>
+            <FontAwesomeIcon :icon="['fas', isMenuOpen ? 'times' : 'bars']" />
           </button>
         </div>
       </div>
@@ -571,17 +571,15 @@ onMounted(() => {
 
   .nav-menu {
     position: fixed;
-    top: 70px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--c-bg-primary);
+    background: var(--c-bg-primary); /* Use solid background for clarity */
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
-    z-index: 100;
+    display: none; /* Hide by default on mobile */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px);
@@ -589,6 +587,7 @@ onMounted(() => {
     backdrop-filter: blur(10px);
 
     &.is-open {
+      display: flex; /* Show only when open */
       opacity: 1;
       visibility: visible;
       transform: translateY(0);

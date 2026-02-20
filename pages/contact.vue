@@ -67,7 +67,7 @@
         <div class="contact-methods">
           <a href="mailto:jaanina.drbtu@gmail.com" class="contact-method">
             <span class="icon gmail" aria-hidden="true">
-              <img src="/icons/gmail.svg" alt="Gmail" class="icon-img" />
+              <FontAwesomeIcon :icon="['fas', 'envelope']" />
             </span>
             <div>
               <h3>{{ $t('contact.emailLabel') }}</h3>
@@ -145,19 +145,24 @@ const handleSubmit = async () => {
   submitMessage.value = '';
 
   try {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Open default mail client with pre-filled information
+    const body = encodeURIComponent(`Name: ${form.value.name}\nEmail: ${form.value.email}\n\nMessage:\n${form.value.message}`);
+    const mailtoUrl = `mailto:jaanina.drbtu@gmail.com?subject=${encodeURIComponent(form.value.subject)}&body=${body}`;
+    
+    window.location.href = mailtoUrl;
 
     submitMessage.value = t('contact.successMessage');
     submitStatus.value = 'success';
 
-    // Reset form
-    form.value = {
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    };
+    // Reset form after a short delay since location.href might not block
+    setTimeout(() => {
+      form.value = {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      };
+    }, 500);
 
     // Clear message after 5 seconds
     setTimeout(() => {

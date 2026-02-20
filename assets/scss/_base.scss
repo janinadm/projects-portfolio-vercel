@@ -13,6 +13,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 
 html,
@@ -27,16 +28,16 @@ body {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-normal);
-  /* Subtle gradient background - calm and premium */
-  background: linear-gradient(180deg, var(--c-bg-gradient-start) 0%, var(--c-bg-gradient-end) 100%);
+  background: var(--c-bg-primary);
   background-attachment: fixed;
   color: var(--c-text-primary);
   -webkit-text-size-adjust: 100%;
   min-height: 100vh;
   position: relative;
+  transition: background-color 0.5s ease, color 0.3s ease;
 }
 
-/* Global atmospheric glow */
+/* Ambient mesh gradient — organic, Oura-style glow */
 body::before {
   content: '';
   position: fixed;
@@ -44,12 +45,12 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* Glow dorado sutil desde la esquina superior derecha */
-  background: radial-gradient(circle at 80% 0%, var(--c-accent-subtle) 0%, transparent 70%),
-    radial-gradient(circle at 0% 100%, rgba(var(--c-bg-primary-rgb), 0) 0%, var(--c-accent-subtle) 100%);
+  background:
+    var(--mesh-gold),
+    var(--mesh-warm);
   pointer-events: none;
   z-index: -1;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 /* Typography hierarchy */
@@ -123,4 +124,28 @@ button {
   outline: 2px solid var(--c-accent);
   outline-offset: 2px;
   border-radius: var(--radius-xs);
+}
+
+/* =========================
+   SCROLL REVEAL ANIMATIONS
+   ========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered transition delays for children */
+@for $i from 1 through 10 {
+  .delay-#{$i} {
+    transition-delay: #{$i * 0.1s};
+  }
 }

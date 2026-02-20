@@ -1,62 +1,59 @@
 <template>
   <div class="contact-page">
-    <div class="contact-hero">
-      <h1>Get In Touch</h1>
-      <p>
-        I'm always interested in hearing about new projects and opportunities. 
-        Feel free to reach out!
-      </p>
+    <div class="contact-hero reveal">
+      <h1>{{ $t('contact.title') }}</h1>
+      <p>{{ $t('contact.subtitle') }}</p>
     </div>
 
-    <div class="contact-container">
+    <div class="contact-container reveal">
       <div class="contact-form-section">
         <form @submit.prevent="handleSubmit" class="contact-form">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">{{ $t('contact.name') }}</label>
             <input
               id="name"
               v-model="form.name"
               type="text"
-              placeholder="Your name"
+              :placeholder="$t('contact.namePlaceholder')"
               required
             />
           </div>
 
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email">{{ $t('contact.email') }}</label>
             <input
               id="email"
               v-model="form.email"
               type="email"
-              placeholder="your@email.com"
+              :placeholder="$t('contact.emailPlaceholder')"
               required
             />
           </div>
 
           <div class="form-group">
-            <label for="subject">Subject</label>
+            <label for="subject">{{ $t('contact.subject') }}</label>
             <input
               id="subject"
               v-model="form.subject"
               type="text"
-              placeholder="Project inquiry"
+              :placeholder="$t('contact.subjectPlaceholder')"
               required
             />
           </div>
 
           <div class="form-group">
-            <label for="message">Message</label>
+            <label for="message">{{ $t('contact.message') }}</label>
             <textarea
               id="message"
               v-model="form.message"
-              placeholder="Tell me about your project..."
+              :placeholder="$t('contact.messagePlaceholder')"
               rows="5"
               required
             ></textarea>
           </div>
 
           <button type="submit" class="submit-btn" :disabled="isSubmitting">
-            {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+            {{ isSubmitting ? $t('contact.sending') : $t('contact.send') }}
           </button>
         </form>
 
@@ -66,14 +63,14 @@
       </div>
 
       <div class="contact-info-section">
-        <h2>Other Ways to Connect</h2>
+        <h2>{{ $t('contact.otherWays') }}</h2>
         <div class="contact-methods">
           <a href="mailto:jaanina.drbtu@gmail.com" class="contact-method">
             <span class="icon gmail" aria-hidden="true">
               <img src="/icons/gmail.svg" alt="Gmail" class="icon-img" />
             </span>
             <div>
-              <h3>Email</h3>
+              <h3>{{ $t('contact.emailLabel') }}</h3>
               <p>jaanina.drbtu@gmail.com</p>
             </div>
           </a>
@@ -83,8 +80,8 @@
               <FontAwesomeIcon :icon="['fab','linkedin']" />
             </span>
             <div>
-              <h3>LinkedIn</h3>
-              <p>LinkedIn Profile</p>
+              <h3>{{ $t('contact.linkedinLabel') }}</h3>
+              <p>{{ $t('contact.linkedinText') }}</p>
             </div>
           </a>
 
@@ -93,8 +90,8 @@
               <FontAwesomeIcon :icon="['fab','github']" />
             </span>
             <div>
-              <h3>GitHub</h3>
-              <p>My Projects</p>
+              <h3>{{ $t('contact.githubLabel') }}</h3>
+              <p>{{ $t('contact.githubText') }}</p>
             </div>
           </a>
 
@@ -103,7 +100,7 @@
               <FontAwesomeIcon :icon="['fab','whatsapp']" />
             </span>
             <div>
-              <h3>WhatsApp</h3>
+              <h3>{{ $t('contact.whatsappLabel') }}</h3>
               <p>+34 628 946 280</p>
             </div>
           </a>
@@ -115,10 +112,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useScrollReveal } from '@/composables/useScrollReveal';
+
+const { t } = useI18n();
 
 definePageMeta({
   layout: 'default',
 });
+
+useScrollReveal();
 
 interface ContactForm {
   name: string;
@@ -146,7 +148,7 @@ const handleSubmit = async () => {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    submitMessage.value = 'Thank you! I\'ll get back to you soon.';
+    submitMessage.value = t('contact.successMessage');
     submitStatus.value = 'success';
 
     // Reset form
@@ -202,10 +204,13 @@ const handleSubmit = async () => {
 }
 
 .contact-form-section {
-  background: var(--c-panel-bg);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   padding: 2rem;
-  border: 1px solid var(--c-border);
-  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-shadow);
 }
 
 .contact-form {
@@ -229,7 +234,7 @@ const handleSubmit = async () => {
   textarea {
     padding: 0.75rem;
     border: 1px solid var(--c-border);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-family: inherit;
     font-size: 1rem;
     color: var(--c-text-primary);
@@ -257,7 +262,7 @@ const handleSubmit = async () => {
   background: var(--c-accent);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -282,7 +287,7 @@ const handleSubmit = async () => {
 
 .submit-message {
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   text-align: center;
   font-weight: 500;
 
@@ -313,63 +318,82 @@ const handleSubmit = async () => {
 
 .contact-method {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  background: var(--c-panel-bg);
-  border: 1px solid var(--c-border);
-  border-radius: 8px;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  box-shadow: var(--glass-shadow);
 
   &:hover {
     border-color: var(--c-accent);
-    background: var(--c-surface-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(224, 168, 46, 0.1);
   }
 
   .icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    min-width: 50px;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: var(--radius-lg);
+    font-size: 1.4rem;
+    transition: transform 0.3s ease;
   }
 
-  /* Per-icon brand colors and WhatsApp circular background */
+  &:hover .icon {
+    transform: scale(1.1);
+  }
+
+  /* Colorful icon backgrounds */
   .icon.gmail {
-    color: #DB4437;
+    background: linear-gradient(135deg, #EA4335 0%, #FBBC05 100%);
+    color: #fff;
   }
 
   .icon.linkedin {
-    color: #0A66C2;
+    background: linear-gradient(135deg, #0A66C2 0%, #0084FF 100%);
+    color: #fff;
   }
 
   .icon.github {
-    color: #111111;
+    background: linear-gradient(135deg, #333 0%, #555 100%);
+    color: #fff;
   }
 
   .icon.whatsapp {
-    color: #25D366;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #fff;
   }
 
   .icon svg {
-    width: 1.1em;
-    height: 1.1em;
+    width: 1.2em;
+    height: 1.2em;
   }
 
   .icon-img {
-    width: 1.1em;
-    height: 1.1em;
+    width: 1.3em;
+    height: 1.3em;
     display: block;
+    filter: brightness(0) invert(1);
   }
 
   h3 {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--c-text-primary);
     margin: 0 0 0.25rem 0;
+    font-weight: 600;
   }
 
   p {
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     color: var(--c-text-secondary);
     margin: 0;
   }

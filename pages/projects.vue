@@ -1,21 +1,19 @@
 <template>
   <div class="projects-page">
-    <div class="projects-hero">
-      <h1>Projects</h1>
-      <p>
-        Personal projects built to learn, showcase skills, and explore in-demand technologies. Each one solves a real problem and demonstrates clean code, thoughtful UX, and modern best practices.
-      </p>
+    <div class="projects-hero reveal">
+      <h1>{{ $t('projects.title') }}</h1>
+      <p>{{ $t('projects.subtitle') }}</p>
     </div>
 
     <div class="projects-grid">
-      <div v-for="project in projectsList" :key="project.slug" class="project-card">
+      <div v-for="project in projectsList" :key="project.slug" class="project-card reveal">
         <div class="project-image-placeholder" :style="project.image && project.slug === 'breviolink' ? { backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'top center' } : {}">
           <span v-if="!project.image || project.slug !== 'breviolink'">{{ project.icon }}</span>
         </div>
         <div class="project-content">
-          <h3>{{ project.title }}</h3>
-          <p class="problem">{{ project.summary }}</p>
-          <p class="description">{{ project.description }}</p>
+          <h3>{{ $t(project.title) }}</h3>
+          <p class="problem">{{ $t(project.summary) }}</p>
+          <p class="description">{{ $t(project.description) }}</p>
           
           <div class="technologies">
             <span v-for="tech in project.technologies" :key="tech" class="tech-badge">
@@ -24,10 +22,10 @@
           </div>
 
           <div class="project-results">
-            <h4>Highlights</h4>
+            <h4>{{ $t('projects.highlights') }}</h4>
             <ul>
-              <li v-for="result in project.highlights" :key="result">
-                {{ result }}
+              <li v-for="result in $tm(project.highlights)" :key="result">
+                {{ $rt(result) }}
               </li>
             </ul>
           </div>
@@ -39,9 +37,9 @@
               target="_blank"
               rel="noopener"
             >
-              View live →
+              {{ $t('projects.liveDemo') }} →
             </a>
-            <NuxtLink v-else :to="`/projects/${project.slug}`">View details →</NuxtLink>
+            <NuxtLink v-else :to="`/projects/${project.slug}`">{{ $t('projects.viewDetails') }}</NuxtLink>
           </div>
         </div>
       </div>
@@ -51,12 +49,14 @@
 
 <script setup lang="ts">
 import { personalProjects, type PersonalProject } from '@/composables/projects';
+import { useScrollReveal } from '@/composables/useScrollReveal';
 
 definePageMeta({
   layout: 'default',
 });
 
 const projectsList: PersonalProject[] = personalProjects;
+useScrollReveal();
 </script>
 
 <style scoped lang="scss">
@@ -65,24 +65,7 @@ const projectsList: PersonalProject[] = personalProjects;
   margin: 0 auto;
   padding: 2rem;
   padding-top: 8rem; /* Space for navbar */
-  position: relative;
-  padding-bottom: 8rem; /* More space for the smoother fade */
-
-  /* Fade out inferior suavizado y alargado */
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 30vh; /* Taller fade area (30% of viewport height) */
-    background: linear-gradient(to bottom, 
-      rgba(var(--c-bg-primary-rgb), 0) 0%, 
-      var(--c-bg-primary) 100%
-    );
-    pointer-events: none;
-    z-index: 10;
-  }
+  padding-bottom: 4rem;
 }
 
 .projects-hero {
@@ -111,18 +94,21 @@ const projectsList: PersonalProject[] = personalProjects;
 }
 
 .project-card {
-  background: var(--c-panel-bg);
-  border: 1px solid var(--c-border);
-  border-radius: 8px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--glass-shadow);
 
   &:hover {
     border-color: var(--c-accent);
-    box-shadow: 0 10px 30px rgba(0, 122, 255, 0.1);
-    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(224, 168, 46, 0.12);
+    transform: translateY(-6px);
   }
 }
 
@@ -175,7 +161,7 @@ const projectsList: PersonalProject[] = personalProjects;
   background: var(--c-accent-subtle);
   color: var(--c-accent);
   padding: 0.375rem 0.75rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 0.75rem;
   font-weight: 500;
 }

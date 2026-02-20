@@ -43,6 +43,16 @@
   --c-accent-active: #A67512;
   --c-accent-subtle: rgba(224, 168, 46, 0.15);
 
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(20px);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+
+  /* Mesh gradients (ambient glow) */
+  --mesh-gold: radial-gradient(ellipse at 20% 50%, rgba(224, 168, 46, 0.08) 0%, transparent 60%);
+  --mesh-warm: radial-gradient(ellipse at 80% 20%, rgba(255, 200, 87, 0.06) 0%, transparent 50%);
+
   /* Status colors */
   --c-success: #34c759;
   --c-warning: #ff9500;
@@ -60,13 +70,13 @@
   --space-9: 80px;
   --space-10: 96px;
 
-  /* Border radius */
-  --radius-xs: 4px;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 18px;
-  --radius-2xl: 24px;
+  /* Border radius (generous, Oura-style) */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
   --radius-full: 9999px;
 
   /* Shadows */
@@ -159,4 +169,14 @@
   --c-accent-hover: #EBC350;
   --c-accent-active: #D9B340;
   --c-accent-subtle: rgba(255, 200, 87, 0.15);
+
+  /* Glassmorphism (dark) — boosted contrast */
+  --glass-bg: rgba(48, 48, 48, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-blur: blur(20px);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  /* Mesh gradients (dark) — stronger glow */
+  --mesh-gold: radial-gradient(ellipse at 20% 50%, rgba(255, 200, 87, 0.10) 0%, transparent 60%);
+  --mesh-warm: radial-gradient(ellipse at 80% 20%, rgba(255, 200, 87, 0.07) 0%, transparent 50%);
 }

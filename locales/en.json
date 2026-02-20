@@ -1,0 +1,184 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "footer": {
+        "rights": "© 2026 Janina Dorobantu. All rights reserved."
+    },
+    "dialog": {
+        "title": "Hey there! 👋",
+        "body1": "I'm so glad you stopped by! This is my little corner of the web where I share my projects, ideas, and passion for frontend development.",
+        "body2": "Feel free to explore, and if you have any questions or just want to chat about code, design, or anything else,",
+        "body2Bold": "don't hesitate to reach out",
+        "body2Emoji": "😊",
+        "body3": "Enjoy the journey!",
+        "action": "Let's go"
+    },
+    "home": {
+        "greeting": "Hi, I'm Janina",
+        "headline": "Frontend Developer · Building products that users love",
+        "intro": "I transform complex requirements into clean, accessible, and performant interfaces. Specialized in Vue 2/3, TypeScript, and Nuxt, with real production experience in insurtech, edtech, and personal SaaS projects.",
+        "seeProjects": "See Projects",
+        "letsTalk": "Let's Talk",
+        "whatIDo": "What I Do",
+        "uiDev": "UI Development",
+        "uiDevDesc": "Building intuitive, accessible interfaces with Vue, Vuetify, and modern component patterns.",
+        "performance": "Performance",
+        "performanceDesc": "Optimizing applications for speed with Nuxt 3, lazy loading, and efficient state management.",
+        "legacyMigration": "Legacy Migration",
+        "legacyMigrationDesc": "Modernizing legacy code to Vue 3 + TypeScript while maintaining business continuity.",
+        "fullStack": "Full-Stack Basics",
+        "fullStackDesc": "Integrating APIs, working with Supabase/PHP backends, and deploying to Vercel.",
+        "featuredProjects": "Featured Projects",
+        "viewAllProjects": "View All Projects →",
+        "techStack": "Tech Stack",
+        "frontend": "Frontend",
+        "frontendTech": "Vue 3 • Nuxt 3 • TypeScript",
+        "styling": "Styling",
+        "stylingTech": "SCSS • Vuetify • CSS3",
+        "stateManagement": "State Management",
+        "stateManagementTech": "Pinia • Composition API",
+        "testing": "Testing",
+        "testingTech": "Vitest • Unit Testing",
+        "backend": "Backend",
+        "backendTech": "Supabase • PHP/Laravel • REST APIs",
+        "tools": "Tools",
+        "toolsTech": "Git • Figma • Jira • WordPress",
+        "ctaTitle": "Ready to Start Your Project?",
+        "ctaSubtitle": "Let's collaborate and build something great together.",
+        "contactMe": "Contact Me"
+    },
+    "about": {
+        "title": "About Me",
+        "intro": "I'm a frontend developer with hands‑on experience building product interfaces and migrating legacy systems. I enjoy turning complex requirements into clear, accessible, and fast UIs using Vue 2/3, TypeScript, and Nuxt.",
+        "technicalSkills": "Technical Skills",
+        "frontend": "Frontend",
+        "frontendSkills": [
+            "Vue 2/3 & Nuxt",
+            "TypeScript",
+            "Pinia, Vue Router, Vuetify",
+            "SCSS & CSS"
+        ],
+        "toolsQa": "Tools & QA",
+        "toolsQaSkills": [
+            "Scrum with Jira",
+            "Functional QA and incident reporting",
+            "Git & version control",
+            "Figma & interface design"
+        ],
+        "backendServices": "Backend & Services",
+        "backendSkills": [
+            "Supabase (Auth, DB, RLS)",
+            "REST API integrations",
+            "PHP/Laravel basics",
+            "Vercel deployment"
+        ],
+        "experience": "Experience",
+        "ebrokerTitle": "eBroker Insurance Technology · Frontend Developer",
+        "ebrokerMeta": "April 2023 – February 2025 · Insurtech",
+        "ebrokerDemo": "Watch Merlin demo →",
+        "ebrokerDesc": "Worked in a Scrum team maintaining and enhancing a high-complexity insurance pricing tool. Implemented business logic and user interfaces using Vue 2 and TypeScript. Developed frontend unit tests and integrated REST APIs in close collaboration with backend teams.",
+        "checkponTitle": "CheckPon · Product Developer & UI Designer",
+        "checkponMeta": "September 2025 – December 2025 · Part-time",
+        "checkponLink": "View on App Store →",
+        "checkponDesc": "Designed user interfaces and navigation flows for an image verification platform. Collaborated with the development team on technical feasibility and created the design system and visual identity.",
+        "evolmindTitle": "EvolMind · Frontend Developer",
+        "evolmindMeta": "February 2025 – January 2026 · EdTech",
+        "evolmindLink": "View tutorials →",
+        "evolmindDesc": "Developing and maintaining a production educational platform using Vue 3 and TypeScript. Migrating legacy PHP/jQuery code to modern frontend architecture. Optimizing frontend components for performance and scalability. Working within agile SCRUM environment.",
+        "breviolinkTitle": "BrevioLink · Personal SaaS Project",
+        "breviolinkMeta": "November 2025 – Present · Side project",
+        "breviolinkDesc": "Built a complete URL shortener and bio pages SaaS from scratch. Implemented authentication with Supabase, real-time analytics, Stripe subscriptions, and Row Level Security. Deployed on Vercel.",
+        "howIWork": "How I Work",
+        "howIWorkIntro": "Clean code, clear communication, and user focus. I rely on:",
+        "howIWorkList": [
+            "Component architecture with Composition API",
+            "Strict typing with TypeScript",
+            "Accessible, thoughtful UI/UX",
+            "Continuous QA and reliability",
+            "Team collaboration and product mindset"
+        ],
+        "beyondWork": "Beyond Work",
+        "beyondWork1": "🌍 I love immersive travel, local city events, 📚 reading, and 🎬 cinema (Tim Burton and Christopher Nolan fan; favorite movie: Contact by Robert Zemeckis — and during the holidays I still enjoy the classic cheesy ones). 💙 Ravenclaw spirit, curious and adventurous. I prefer ♟️ board games, enjoy chess, and creating a home around my people.",
+        "beyondWork2": "🤝 I thrive in teams and also value focused solo time. If I were an animal: a 🐬 dolphin — sometimes a 🐼 panda. 🏡 I care about aesthetics, interior design, and keeping things clean and organized."
+    },
+    "projects": {
+        "title": "My Projects",
+        "subtitle": "A collection of personal projects showcasing my frontend development skills.",
+        "viewDetails": "View details →",
+        "highlights": "Highlights",
+        "liveDemo": "Live Demo",
+        "sourceCode": "Source Code",
+        "breviolink": {
+            "title": "BrevioLink",
+            "summary": "URL shortener & bio pages with analytics, auth, and Stripe subscriptions.",
+            "description": "A full-featured SaaS application offering URL shortening and customizable bio pages (\"link in bio\"). Includes real-time click analytics, user authentication, and Stripe-powered Pro subscriptions.",
+            "highlights": [
+                "Complete auth flow with Supabase",
+                "URL shortening & click analytics",
+                "Bio Pages with themes",
+                "Stripe integration for Pro tier",
+                "Row Level Security (RLS) protection"
+            ]
+        },
+        "ecommerce": {
+            "title": "Headless E-Commerce Storefront",
+            "summary": "Fast storefront with product catalog, cart, and Stripe checkout.",
+            "description": "A modern storefront showcasing SSR, caching, and a delightful cart experience. Emphasis on accessibility and performance budgets.",
+            "highlights": [
+                "SSR product listing and detail pages",
+                "Cart with persistence",
+                "Checkout integration with Stripe",
+                "Lighthouse-friendly performance"
+            ]
+        },
+        "verifier": {
+            "title": "Image Provenance Verifier",
+            "summary": "Practical demo to inspect EXIF, hashes, and simple tamper signals.",
+            "description": "A learning project to explore image integrity. Extracts EXIF metadata, computes hashes, and highlights potential changes.",
+            "highlights": [
+                "EXIF/metadata inspection",
+                "Perceptual hash comparison",
+                "Side-by-side diff preview",
+                "Verification reports"
+            ]
+        },
+        "learning": {
+            "title": "Learning Hub – Quizzes & Progress",
+            "summary": "Mini-LMS with modules, quizzes, progress tracking, and admin authoring.",
+            "description": "A focused education hub with lessons, quizzes, and progress tracking. Includes an admin area for content authoring.",
+            "highlights": [
+                "Module/lesson structure",
+                "Quiz engine with scoring",
+                "Admin authoring screens",
+                "Persisted progress tracking"
+            ]
+        }
+    },
+    "contact": {
+        "title": "Get In Touch",
+        "subtitle": "I'm always interested in hearing about new projects and opportunities. Feel free to reach out!",
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "email": "Email",
+        "emailPlaceholder": "your{'@'}email.com",
+        "subject": "Subject",
+        "subjectPlaceholder": "Project inquiry",
+        "message": "Message",
+        "messagePlaceholder": "Tell me about your project...",
+        "send": "Send Message",
+        "sending": "Sending...",
+        "successMessage": "Thank you! I'll get back to you soon.",
+        "errorMessage": "Something went wrong. Please try again.",
+        "otherWays": "Other Ways to Connect",
+        "emailLabel": "Email",
+        "linkedinLabel": "LinkedIn",
+        "linkedinText": "LinkedIn Profile",
+        "githubLabel": "GitHub",
+        "githubText": "My Projects",
+        "whatsappLabel": "WhatsApp"
+    }
+}

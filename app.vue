@@ -12,15 +12,20 @@
           </span>
         </button>
         <ul class="nav-menu">
-          <li><NuxtLink to="/" class="nav-link">Home</NuxtLink></li>
-          <li><NuxtLink to="/about" class="nav-link">About</NuxtLink></li>
-          <li><NuxtLink to="/projects" class="nav-link">Projects</NuxtLink></li>
-          <li><NuxtLink to="/contact" class="nav-link">Contact</NuxtLink></li>
+          <li><NuxtLink to="/" class="nav-link">{{ $t('nav.home') }}</NuxtLink></li>
+          <li><NuxtLink to="/about" class="nav-link">{{ $t('nav.about') }}</NuxtLink></li>
+          <li><NuxtLink to="/projects" class="nav-link">{{ $t('nav.projects') }}</NuxtLink></li>
+          <li><NuxtLink to="/contact" class="nav-link">{{ $t('nav.contact') }}</NuxtLink></li>
         </ul>
-        <button class="theme-toggle" @click="toggleTheme" :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
-          <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <FontAwesomeIcon v-else :icon="['fas','moon']" />
-        </button>
+        <div class="nav-actions">
+          <button class="lang-toggle" @click="toggleLocale" :title="currentLocaleName">
+            {{ locale === 'en' ? 'ES' : 'EN' }}
+          </button>
+          <button class="theme-toggle" @click="toggleTheme" :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+            <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <FontAwesomeIcon v-else :icon="['fas','moon']" />
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -30,7 +35,7 @@
 
     <footer class="footer">
       <div class="footer-content">
-        <p>&copy; 2026 Janina Dorobantu. All rights reserved.</p>
+        <p>{{ $t('footer.rights') }}</p>
         <div class="footer-links">
           <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
           <a href="https://www.linkedin.com/in/janina-dorobantu-b204b9192/" target="_blank" rel="noopener">LinkedIn</a>
@@ -47,14 +52,14 @@
             <FontAwesomeIcon :icon="['fas', 'times']" />
           </button>
           <div class="dialog-header">
-            <h2>Hey there! 👋</h2>
+            <h2>{{ $t('dialog.title') }}</h2>
           </div>
           <div class="dialog-body">
-            <p>I'm so glad you stopped by! This is my little corner of the web where I share my projects, ideas, and passion for frontend development.</p>
-            <p>Feel free to explore, and if you have any questions or just want to chat about code, design, or anything else, <strong>don't hesitate to reach out</strong>. 😊</p>
-            <p>Enjoy the journey!</p>
+            <p>{{ $t('dialog.body1') }}</p>
+            <p>{{ $t('dialog.body2') }} <strong>{{ $t('dialog.body2Bold') }}</strong>. {{ $t('dialog.body2Emoji') }}</p>
+            <p>{{ $t('dialog.body3') }}</p>
           </div>
-          <button class="dialog-action" @click="closeWelcomeDialog">Let's go</button>
+          <button class="dialog-action" @click="closeWelcomeDialog">{{ $t('dialog.action') }}</button>
         </div>
       </div>
     </Teleport>
@@ -62,11 +67,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
-const isDark = ref(true) // Default to true (Dark Mode)
+const { locale, locales, setLocale } = useI18n()
+
+const isDark = ref(true)
 const showWelcomeDialog = ref(false)
 const showBadge = ref(true)
+
+const currentLocaleName = computed(() => {
+  const loc = (locales.value as Array<{ code: string; name: string }>).find(l => l.code === locale.value)
+  return loc?.name || locale.value
+})
+
+const toggleLocale = () => {
+  const newLocale = locale.value === 'en' ? 'es' : 'en'
+  setLocale(newLocale)
+}
 
 const toggleTheme = () => {
   isDark.value = !isDark.value
@@ -90,7 +107,6 @@ const navigateTo = (path: string) => {
 }
 
 onMounted(() => {
-  // Check local storage, default to 'dark' if not found
   const theme = localStorage.getItem('theme') || 'dark'
   isDark.value = theme === 'dark'
   document.documentElement.setAttribute('data-theme', theme)
@@ -100,20 +116,6 @@ onMounted(() => {
 <style lang="scss">
 @use './assets/scss/main.scss';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  background: var(--c-bg-primary);
-  color: var(--c-text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.6;
-}
 
 .app {
   display: flex;
@@ -123,12 +125,14 @@ body {
 
 // Navigation Styles
 .navbar {
-  background: var(--c-panel-bg);
-  border-bottom: 1px solid var(--c-border);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
   position: sticky;
   top: 0;
   z-index: 100;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   
   &.home-nav {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
@@ -170,7 +174,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   background: none;
   border: none;
   cursor: pointer;
@@ -189,14 +193,14 @@ body {
     height: 40px;
     background: linear-gradient(135deg, var(--c-accent) 0%, var(--c-accent-hover) 100%);
     color: white;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: -0.5px;
-    box-shadow: 0 4px 12px rgba(214, 76, 143, 0.3);
+    box-shadow: 0 4px 12px rgba(224, 168, 46, 0.3);
     transition: all 0.4s ease;
     perspective: 1000px;
     transform-style: preserve-3d;
@@ -204,7 +208,7 @@ body {
     
     .nav-logo:hover & {
       transform: rotateX(10deg) rotateY(-10deg);
-      box-shadow: 0 8px 24px rgba(214, 76, 143, 0.5);
+      box-shadow: 0 8px 24px rgba(224, 168, 46, 0.5);
     }
 
     .nav-logo:active & {
@@ -302,6 +306,60 @@ body {
   }
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.lang-toggle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--c-accent);
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--c-accent-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--c-accent-subtle);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 38px;
+  text-align: center;
+
+  &:hover {
+    background: var(--c-accent);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(224, 168, 46, 0.2);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.cv-download {
+  color: var(--c-text-secondary);
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: transparent;
+
+  &:hover {
+    color: var(--c-accent);
+    background: var(--c-accent-subtle);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.95);
+  }
+}
+
 .theme-toggle {
   background: none;
   border: none;
@@ -340,9 +398,10 @@ body {
 // Footer Styles
 .footer {
   background: transparent;
-  border-top: none;
+  border-top: 1px solid var(--glass-border);
   margin-top: 0;
   padding-top: 2rem;
+  transition: border-color 0.3s ease;
 }
 
 .footer-content {
@@ -379,8 +438,9 @@ body {
 .dialog-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -390,13 +450,13 @@ body {
 
 .dialog-content {
   background: var(--c-panel-bg);
-  border: 1px solid var(--c-border);
-  padding: 2rem;
-  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  padding: 2.5rem;
+  border-radius: var(--radius-2xl);
   max-width: 480px;
   width: 90%;
   position: relative;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
   transform-origin: center;
   animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -429,9 +489,10 @@ body {
 }
 
 .dialog-body {
-  color: var(--c-text-secondary);
-  line-height: 1.6;
+  color: var(--c-text-primary);
+  line-height: 1.7;
   margin-bottom: 1.5rem;
+  font-size: 0.95rem;
 
   p {
     margin-bottom: 1rem;
@@ -439,6 +500,7 @@ body {
 
   strong {
     color: var(--c-accent);
+    font-weight: 600;
   }
 }
 
@@ -448,16 +510,16 @@ body {
   background: linear-gradient(135deg, var(--c-accent) 0%, var(--c-accent-hover) 100%);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(214, 76, 143, 0.3);
+  box-shadow: 0 4px 12px rgba(224, 168, 46, 0.3);
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(214, 76, 143, 0.4);
+    box-shadow: 0 6px 16px rgba(224, 168, 46, 0.4);
   }
 
   &:active {

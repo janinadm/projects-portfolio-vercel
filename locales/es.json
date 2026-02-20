@@ -1,0 +1,184 @@
+{
+    "nav": {
+        "home": "Inicio",
+        "about": "Sobre mí",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+    },
+    "footer": {
+        "rights": "© 2026 Janina Dorobantu. Todos los derechos reservados."
+    },
+    "dialog": {
+        "title": "¡Hola! 👋",
+        "body1": "¡Me alegra que estés aquí! Este es mi rincón en la web donde comparto mis proyectos, ideas y pasión por el desarrollo frontend.",
+        "body2": "Explora libremente, y si tienes alguna pregunta o simplemente quieres hablar sobre código, diseño o lo que sea,",
+        "body2Bold": "no dudes en contactarme",
+        "body2Emoji": "😊",
+        "body3": "¡Disfruta del camino!",
+        "action": "¡Vamos!"
+    },
+    "home": {
+        "greeting": "Hola, soy Janina",
+        "headline": "Desarrolladora Frontend · Creando productos que enamoran",
+        "intro": "Transformo requisitos complejos en interfaces limpias, accesibles y rápidas. Especializada en Vue 2/3, TypeScript y Nuxt, con experiencia real en insurtech, edtech y proyectos SaaS personales.",
+        "seeProjects": "Ver Proyectos",
+        "letsTalk": "Hablemos",
+        "whatIDo": "Lo que hago",
+        "uiDev": "Desarrollo UI",
+        "uiDevDesc": "Construyendo interfaces intuitivas y accesibles con Vue, Vuetify y patrones de componentes modernos.",
+        "performance": "Rendimiento",
+        "performanceDesc": "Optimizando aplicaciones con Nuxt 3, carga diferida y gestión de estado eficiente.",
+        "legacyMigration": "Migración Legacy",
+        "legacyMigrationDesc": "Modernizando código legacy a Vue 3 + TypeScript manteniendo la continuidad del negocio.",
+        "fullStack": "Full-Stack Básico",
+        "fullStackDesc": "Integrando APIs, trabajando con backends Supabase/PHP y desplegando en Vercel.",
+        "featuredProjects": "Proyectos Destacados",
+        "viewAllProjects": "Ver Todos los Proyectos →",
+        "techStack": "Stack Tecnológico",
+        "frontend": "Frontend",
+        "frontendTech": "Vue 3 • Nuxt 3 • TypeScript",
+        "styling": "Estilos",
+        "stylingTech": "SCSS • Vuetify • CSS3",
+        "stateManagement": "Gestión de Estado",
+        "stateManagementTech": "Pinia • Composition API",
+        "testing": "Testing",
+        "testingTech": "Vitest • Unit Testing",
+        "backend": "Backend",
+        "backendTech": "Supabase • PHP/Laravel • REST APIs",
+        "tools": "Herramientas",
+        "toolsTech": "Git • Figma • Jira • WordPress",
+        "ctaTitle": "¿Listo para empezar tu proyecto?",
+        "ctaSubtitle": "Colaboremos y construyamos algo genial juntos.",
+        "contactMe": "Contáctame"
+    },
+    "about": {
+        "title": "Sobre Mí",
+        "intro": "Soy desarrolladora frontend con experiencia práctica construyendo interfaces de producto y migrando sistemas legacy. Disfruto convirtiendo requisitos complejos en UIs claras, accesibles y rápidas usando Vue 2/3, TypeScript y Nuxt.",
+        "technicalSkills": "Habilidades Técnicas",
+        "frontend": "Frontend",
+        "frontendSkills": [
+            "Vue 2/3 y Nuxt",
+            "TypeScript",
+            "Pinia, Vue Router, Vuetify",
+            "SCSS y CSS"
+        ],
+        "toolsQa": "Herramientas y QA",
+        "toolsQaSkills": [
+            "Scrum con Jira",
+            "QA funcional y reporte de incidencias",
+            "Git y control de versiones",
+            "Figma y diseño de interfaces"
+        ],
+        "backendServices": "Backend y Servicios",
+        "backendSkills": [
+            "Supabase (Auth, DB, RLS)",
+            "Integraciones REST API",
+            "PHP/Laravel básico",
+            "Despliegue en Vercel"
+        ],
+        "experience": "Experiencia",
+        "ebrokerTitle": "eBroker Insurance Technology · Desarrolladora Frontend",
+        "ebrokerMeta": "Abril 2023 – Febrero 2025 · Insurtech",
+        "ebrokerDemo": "Ver demo de Merlin →",
+        "ebrokerDesc": "Trabajé en un equipo Scrum manteniendo y mejorando una herramienta de tarificación de seguros de alta complejidad. Implementé lógica de negocio e interfaces usando Vue 2 y TypeScript. Desarrollé tests unitarios frontend e integré APIs REST en estrecha colaboración con equipos backend.",
+        "checkponTitle": "CheckPon · Desarrolladora de Producto y Diseñadora UI",
+        "checkponMeta": "Septiembre 2025 – Diciembre 2025 · Media jornada",
+        "checkponLink": "Ver en App Store →",
+        "checkponDesc": "Diseñé interfaces de usuario y flujos de navegación para una plataforma de verificación de imágenes. Colaboré con el equipo de desarrollo en viabilidad técnica y creé el sistema de diseño e identidad visual.",
+        "evolmindTitle": "EvolMind · Desarrolladora Frontend",
+        "evolmindMeta": "Febrero 2025 – Enero 2026 · EdTech",
+        "evolmindLink": "Ver tutoriales →",
+        "evolmindDesc": "Desarrollando y manteniendo una plataforma educativa en producción usando Vue 3 y TypeScript. Migrando código legacy PHP/jQuery a arquitectura frontend moderna. Optimizando componentes frontend para rendimiento y escalabilidad. Trabajando en entorno ágil SCRUM.",
+        "breviolinkTitle": "BrevioLink · Proyecto SaaS Personal",
+        "breviolinkMeta": "Noviembre 2025 – Presente · Proyecto personal",
+        "breviolinkDesc": "Construí un acortador de URLs y páginas bio SaaS completo desde cero. Implementé autenticación con Supabase, analíticas en tiempo real, suscripciones Stripe y Row Level Security. Desplegado en Vercel.",
+        "howIWork": "Cómo Trabajo",
+        "howIWorkIntro": "Código limpio, comunicación clara y foco en el usuario. Me apoyo en:",
+        "howIWorkList": [
+            "Arquitectura de componentes con Composition API",
+            "Tipado estricto con TypeScript",
+            "UI/UX accesible y cuidado",
+            "QA continuo y fiabilidad",
+            "Colaboración en equipo y mentalidad de producto"
+        ],
+        "beyondWork": "Más Allá del Trabajo",
+        "beyondWork1": "🌍 Me encanta viajar de forma inmersiva, eventos locales, 📚 leer y el 🎬 cine (fan de Tim Burton y Christopher Nolan; película favorita: Contact de Robert Zemeckis — y en fiestas sigo disfrutando las pelis típicas). 💙 Espíritu Ravenclaw, curiosa y aventurera. Prefiero los ♟️ juegos de mesa, disfruto el ajedrez y crear un hogar alrededor de mi gente.",
+        "beyondWork2": "🤝 Disfruto trabajando en equipo y también valoro el tiempo a solas enfocada. Si fuera un animal: un 🐬 delfín — a veces un 🐼 panda. 🏡 Me importa la estética, el diseño de interiores y mantener todo limpio y organizado."
+    },
+    "projects": {
+        "title": "Mis Proyectos",
+        "subtitle": "Una colección de proyectos personales que muestran mis habilidades de desarrollo frontend.",
+        "viewDetails": "Ver detalles →",
+        "highlights": "Destacados",
+        "liveDemo": "Demo en Vivo",
+        "sourceCode": "Código Fuente",
+        "breviolink": {
+            "title": "BrevioLink",
+            "summary": "Acortador de URL y páginas bio con analíticas, auth y suscripciones Stripe.",
+            "description": "Una aplicación SaaS completa que ofrece acortamiento de URLs y páginas bio personalizables. Incluye analíticas en tiempo real, autenticación de usuarios y suscripciones Pro con Stripe.",
+            "highlights": [
+                "Flujo completo de auth con Supabase",
+                "Acortador de URL y analíticas de clics",
+                "Páginas Bio con temas personalizables",
+                "Integración de Stripe para nivel Pro",
+                "Protección con Row Level Security (RLS)"
+            ]
+        },
+        "ecommerce": {
+            "title": "E-Commerce Headless Storefront",
+            "summary": "Tienda rápida con catálogo de productos, carrito y pago con Stripe.",
+            "description": "Una tienda moderna que muestra SSR, caché y una excelente experiencia de carrito. Énfasis en accesibilidad y presupuestos de rendimiento.",
+            "highlights": [
+                "Listado de productos y detalles con SSR",
+                "Carrito con persistencia",
+                "Integración de pago con Stripe",
+                "Rendimiento optimizado para Lighthouse"
+            ]
+        },
+        "verifier": {
+            "title": "Verificador de Procedencia de Imagen",
+            "summary": "Demo práctica para inspeccionar EXIF, hashes y señales de manipulación.",
+            "description": "Proyecto de aprendizaje para explorar la integridad de las imágenes. Extrae metadatos EXIF, calcula hashes y resalta cambios potenciales.",
+            "highlights": [
+                "Inspección de metadatos/EXIF",
+                "Comparación de hash perceptual",
+                "Vista previa de diff en paralelo",
+                "Informes de verificación"
+            ]
+        },
+        "learning": {
+            "title": "Learning Hub – Quizzes y Progreso",
+            "summary": "Mini-LMS con módulos, cuestionarios, seguimiento de progreso y autoría admin.",
+            "description": "Un centro educativo enfocado con lecciones, cuestionarios y seguimiento de progreso. Incluye área de administración para autoría.",
+            "highlights": [
+                "Estructura de módulos y lecciones",
+                "Motor de cuestionarios con puntuación",
+                "Pantallas de autoría para admin",
+                "Seguimiento de progreso persistente"
+            ]
+        }
+    },
+    "contact": {
+        "title": "Contacto",
+        "subtitle": "Siempre estoy interesada en escuchar sobre nuevos proyectos y oportunidades. ¡No dudes en contactarme!",
+        "name": "Nombre",
+        "namePlaceholder": "Tu nombre",
+        "email": "Email",
+        "emailPlaceholder": "tu{'@'}email.com",
+        "subject": "Asunto",
+        "subjectPlaceholder": "Consulta de proyecto",
+        "message": "Mensaje",
+        "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+        "send": "Enviar Mensaje",
+        "sending": "Enviando...",
+        "successMessage": "¡Gracias! Te responderé pronto.",
+        "errorMessage": "Algo salió mal. Por favor, inténtalo de nuevo.",
+        "otherWays": "Otras Formas de Conectar",
+        "emailLabel": "Email",
+        "linkedinLabel": "LinkedIn",
+        "linkedinText": "Perfil de LinkedIn",
+        "githubLabel": "GitHub",
+        "githubText": "Mis Proyectos",
+        "whatsappLabel": "WhatsApp"
+    }
+}

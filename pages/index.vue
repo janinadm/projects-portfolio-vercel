@@ -8,49 +8,49 @@
       
       <div class="hero-content">
         <div class="hero-text">
-          <div class="greeting">
-            <h2>Hi, I'm Janina</h2>
+          <div class="greeting reveal">
+            <h2>{{ $t('home.greeting') }}</h2>
           </div>
-          <h1>Frontend Developer · Building products that users love</h1>
-          <p>
-            I transform complex requirements into clean, accessible, and performant interfaces. Specialized in Vue 2/3, TypeScript, and Nuxt, with real production experience in insurtech, edtech, and personal SaaS projects.
+          <h1 class="reveal">{{ $t('home.headline') }}</h1>
+          <p class="reveal">
+            {{ $t('home.intro') }}
           </p>
-          <div class="hero-actions">
-            <NuxtLink to="/projects" class="btn btn-primary">See Projects</NuxtLink>
-            <NuxtLink to="/contact" class="btn btn-secondary">Let's Talk</NuxtLink>
+          <div class="hero-actions reveal">
+            <NuxtLink to="/projects" class="btn btn-primary">{{ $t('home.seeProjects') }}</NuxtLink>
+            <NuxtLink to="/contact" class="btn btn-secondary">{{ $t('home.letsTalk') }}</NuxtLink>
           </div>
         </div>
       </div>
     </section>
 
     <section class="highlights">
-      <h2>What I Do</h2>
+      <h2 class="reveal">{{ $t('home.whatIDo') }}</h2>
       <div class="highlights-grid">
-        <div class="highlight-card">
+        <div class="highlight-card reveal">
           <span class="icon">🎨</span>
-          <h3>UI Development</h3>
-          <p>Building intuitive, accessible interfaces with Vue, Vuetify, and modern component patterns.</p>
+          <h3>{{ $t('home.uiDev') }}</h3>
+          <p>{{ $t('home.uiDevDesc') }}</p>
         </div>
-        <div class="highlight-card">
+        <div class="highlight-card reveal">
           <span class="icon">⚡</span>
-          <h3>Performance</h3>
-          <p>Optimizing applications for speed with Nuxt 3, lazy loading, and efficient state management.</p>
+          <h3>{{ $t('home.performance') }}</h3>
+          <p>{{ $t('home.performanceDesc') }}</p>
         </div>
-        <div class="highlight-card">
+        <div class="highlight-card reveal">
           <span class="icon">🔄</span>
-          <h3>Legacy Migration</h3>
-          <p>Modernizing legacy code to Vue 3 + TypeScript while maintaining business continuity.</p>
+          <h3>{{ $t('home.legacyMigration') }}</h3>
+          <p>{{ $t('home.legacyMigrationDesc') }}</p>
         </div>
-        <div class="highlight-card">
+        <div class="highlight-card reveal">
           <span class="icon">🛠️</span>
-          <h3>Full-Stack Basics</h3>
-          <p>Integrating APIs, working with Supabase/PHP backends, and deploying to Vercel.</p>
+          <h3>{{ $t('home.fullStack') }}</h3>
+          <p>{{ $t('home.fullStackDesc') }}</p>
         </div>
       </div>
     </section>
 
     <section class="featured-projects">
-      <h2>Featured Projects</h2>
+      <h2 class="reveal">{{ $t('home.featuredProjects') }}</h2>
       <div class="projects-preview">
         <component
           v-for="project in featured"
@@ -58,64 +58,66 @@
           :is="project.liveUrl ? 'a' : 'NuxtLink'"
           :to="!project.liveUrl ? `/projects/${project.slug}` : undefined"
           :href="project.liveUrl || undefined"
-          class="project-preview"
+          class="project-preview reveal"
           target="_blank"
           rel="noopener"
         >
           <div class="project-preview-image" :style="project.image ? { backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}">
             <span v-if="!project.image">{{ project.icon }}</span>
           </div>
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.summary }}</p>
+          <h3>{{ $t(project.title) }}</h3>
+          <p>{{ $t(project.summary) }}</p>
         </component>
       </div>
-      <div class="view-all">
-        <NuxtLink to="/projects">View All Projects →</NuxtLink>
+      <div class="view-all reveal">
+        <NuxtLink to="/projects">{{ $t('home.viewAllProjects') }}</NuxtLink>
       </div>
     </section>
 
     <section class="tech-stack">
-      <h2>Tech Stack</h2>
+      <h2 class="reveal">{{ $t('home.techStack') }}</h2>
       <div class="tech-grid">
-        <div class="tech-item">
-          <strong>Frontend</strong>
-          <p>Vue 3 • Nuxt 3 • TypeScript</p>
+        <div class="tech-item reveal">
+          <strong>{{ $t('home.frontend') }}</strong>
+          <p>{{ $t('home.frontendTech') }}</p>
         </div>
-        <div class="tech-item">
-          <strong>Styling</strong>
-          <p>SCSS • Vuetify • CSS3</p>
+        <div class="tech-item reveal">
+          <strong>{{ $t('home.styling') }}</strong>
+          <p>{{ $t('home.stylingTech') }}</p>
         </div>
-        <div class="tech-item">
-          <strong>State Management</strong>
-          <p>Pinia • Composition API</p>
+        <div class="tech-item reveal">
+          <strong>{{ $t('home.stateManagement') }}</strong>
+          <p>{{ $t('home.stateManagementTech') }}</p>
         </div>
-        <div class="tech-item">
-          <strong>Testing</strong>
-          <p>Vitest • Unit Testing</p>
+        <div class="tech-item reveal">
+          <strong>{{ $t('home.testing') }}</strong>
+          <p>{{ $t('home.testingTech') }}</p>
         </div>
-        <div class="tech-item">
-          <strong>Backend</strong>
-          <p>Supabase • PHP/Laravel • REST APIs</p>
+        <div class="tech-item reveal">
+          <strong>{{ $t('home.backend') }}</strong>
+          <p>{{ $t('home.backendTech') }}</p>
         </div>
-        <div class="tech-item">
-          <strong>Tools</strong>
-          <p>Git • Figma • Jira • Vitest</p>
+        <div class="tech-item reveal">
+          <strong>{{ $t('home.tools') }}</strong>
+          <p>{{ $t('home.toolsTech') }}</p>
         </div>
       </div>
     </section>
 
-    <section class="cta-section">
-      <h2>Ready to Start Your Project?</h2>
-      <p>Let's collaborate and build something great together.</p>
-      <NuxtLink to="/contact" class="btn btn-primary">Contact Me</NuxtLink>
+    <section class="cta-section reveal">
+      <h2>{{ $t('home.ctaTitle') }}</h2>
+      <p>{{ $t('home.ctaSubtitle') }}</p>
+      <NuxtLink to="/contact" class="btn btn-primary">{{ $t('home.contactMe') }}</NuxtLink>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import { personalProjects } from '@/composables/projects';
+import { useScrollReveal } from '@/composables/useScrollReveal';
 
 const featured = personalProjects;
+useScrollReveal();
 </script>
 
 <style scoped lang="scss">
@@ -285,7 +287,7 @@ const featured = personalProjects;
 .btn {
   display: inline-block;
   padding: 0.875rem 1.75rem;
-  border-radius: 4px;
+  border-radius: var(--radius-lg);
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -299,7 +301,7 @@ const featured = personalProjects;
     &:hover {
       background: var(--c-accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(224, 168, 46, 0.25); /* Sombra dorada */
+      box-shadow: 0 8px 16px rgba(224, 168, 46, 0.25);
     }
   }
 
@@ -338,23 +340,34 @@ const featured = personalProjects;
 }
 
 .highlight-card {
-  background: var(--c-panel-bg);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   padding: 2rem;
-  border-radius: 8px;
-  border: 1px solid var(--c-border);
-  transition: all 0.3s ease;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+  transition: all 0.4s ease;
   text-align: center;
+  box-shadow: var(--glass-shadow);
 
   &:hover {
     border-color: var(--c-accent);
-    box-shadow: 0 10px 30px rgba(0, 122, 255, 0.08);
-    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(224, 168, 46, 0.12);
+    transform: translateY(-6px);
   }
 
   .icon {
-    display: block;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    font-size: 1.75rem;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(224, 168, 46, 0.15) 0%, rgba(255, 200, 87, 0.08) 100%);
+    border: 1px solid rgba(224, 168, 46, 0.2);
+    box-shadow: 0 4px 12px rgba(224, 168, 46, 0.1);
   }
 
   h3 {
@@ -392,19 +405,22 @@ const featured = personalProjects;
 }
 
 .project-preview {
-  background: var(--c-panel-bg);
-  border: 1px solid var(--c-border);
-  border-radius: 8px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--glass-shadow);
 
   &:hover {
     border-color: var(--c-accent);
-    box-shadow: 0 10px 30px rgba(0, 122, 255, 0.1);
-    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(224, 168, 46, 0.12);
+    transform: translateY(-6px);
   }
 }
 
@@ -467,11 +483,20 @@ const featured = personalProjects;
 }
 
 .tech-item {
-  background: var(--c-panel-bg);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--c-border);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
   text-align: center;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s ease;
+
+  &:hover {
+    border-color: var(--c-accent);
+    transform: translateY(-4px);
+  }
 
   strong {
     display: block;
@@ -488,25 +513,29 @@ const featured = personalProjects;
 }
 
 // CTA Section
-// CTA Section
 .cta-section {
-  background: linear-gradient(135deg, var(--c-bg-gradient-start), var(--c-bg-gradient-end));
-  max-width: 100%; /* Full width integration */
-  margin: 0; /* Remove margin to touch footer */
-  padding: 6rem 2rem 8rem; /* Extra padding bottom for fade */
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  max-width: 900px;
+  margin: 4rem auto 2rem;
+  padding: 4rem 2rem;
   text-align: center;
-  border: none; /* Remove border for seamless look */
+  box-shadow: var(--glass-shadow);
   position: relative;
-  
-  /* Fade out inferior */
-  &::after {
+  overflow: hidden;
+
+  /* Subtle golden glow behind CTA */
+  &::before {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 10rem;
-    background: linear-gradient(to bottom, transparent, var(--c-bg-primary));
+    top: -50%;
+    left: -20%;
+    width: 140%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(224, 168, 46, 0.06) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -514,12 +543,14 @@ const featured = personalProjects;
     font-size: 2rem;
     color: var(--c-text-primary);
     margin-bottom: 0.75rem;
+    position: relative;
   }
 
   p {
     color: var(--c-text-secondary);
     margin-bottom: 1.5rem;
     font-size: 1.05rem;
+    position: relative;
   }
 }
 

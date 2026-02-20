@@ -336,6 +336,11 @@ onMounted(() => {
       }
     }
   }
+
+  /* Hide mobile settings on desktop */
+  .mobile-settings {
+    display: none !important;
+  }
 }
 
 .nav-actions {
@@ -592,14 +597,13 @@ onMounted(() => {
     bottom: 0 !important;
     width: 100% !important;
     height: 100vh !important;
-    background: var(--glass-bg) !important;
-    backdrop-filter: blur(40px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+    background: rgba(0, 0, 0, 0.98) !important; /* Nearly solid black for focus */
+    backdrop-filter: blur(100px) saturate(200%) !important; /* Extreme blur */
+    -webkit-backdrop-filter: blur(100px) saturate(200%) !important;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    display: flex !important; /* Always flex but hidden via transform */
-    opacity: 1 !important; /* No fade, just slide */
+    display: flex !important; 
     transform: translateY(-100%);
     visibility: hidden;
     z-index: 9999 !important;

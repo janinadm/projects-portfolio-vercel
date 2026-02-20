@@ -597,8 +597,8 @@ onMounted(() => {
     bottom: 0 !important;
     width: 100% !important;
     height: 100vh !important;
-    background: rgba(0, 0, 0, 0.98) !important; /* Nearly solid black for focus */
-    backdrop-filter: blur(100px) saturate(200%) !important; /* Extreme blur */
+    background: rgba(0, 0, 0, 0.85) !important; /* Premium "dark frost" transparency */
+    backdrop-filter: blur(100px) saturate(200%) !important; /* Extreme blur for focus */
     -webkit-backdrop-filter: blur(100px) saturate(200%) !important;
     flex-direction: column;
     align-items: center;

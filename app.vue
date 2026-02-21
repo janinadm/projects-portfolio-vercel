@@ -54,13 +54,8 @@
     </main>
 
     <footer class="footer">
-      <div class="footer-content">
+      <div class="footer-content" style="justify-content: center;">
         <p>{{ $t('footer.rights') }}</p>
-        <div class="footer-links">
-          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/janina-dorobantu-b204b9192/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://wa.me/34628946280" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
       </div>
     </footer>
 

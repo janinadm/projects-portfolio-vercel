@@ -49,11 +49,11 @@
       </div>
     </nav>
 
-    <main class="main-content" :class="{ 'is-blurred': isMenuOpen }">
+    <main class="main-content">
       <NuxtPage />
     </main>
 
-    <footer class="footer" :class="{ 'is-blurred': isMenuOpen }">
+    <footer class="footer">
       <div class="footer-content">
         <p>{{ $t('footer.rights') }}</p>
         <div class="footer-links">
@@ -177,6 +177,11 @@ onMounted(() => {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     box-shadow: none !important;
+
+    .nav-logo {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
   }
   
   &.home-nav {
@@ -443,12 +448,6 @@ onMounted(() => {
 .main-content {
   flex: 1;
   padding: 0;
-  transition: filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  
-  &.is-blurred {
-    filter: blur(12px);
-    pointer-events: none;
-  }
 }
 
 // Footer Styles
@@ -457,12 +456,6 @@ onMounted(() => {
   border-top: 1px solid var(--glass-border);
   margin-top: 0;
   padding-top: 2rem;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  
-  &.is-blurred {
-    filter: blur(12px);
-    pointer-events: none;
-  }
 }
 
 .footer-content {
@@ -619,8 +612,8 @@ onMounted(() => {
     width: 100% !important;
     height: 100dvh !important; /* Use dynamic viewport unit */
     background: rgba(0, 0, 0, 0.7) !important; /* Lighter "dark frost" transparency */
-    backdrop-filter: blur(100px) saturate(200%) !important; /* Extreme blur for focus */
-    -webkit-backdrop-filter: blur(100px) saturate(200%) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; /* Balanced blur */
+    -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
     flex-direction: column;
     align-items: center;
     justify-content: center;

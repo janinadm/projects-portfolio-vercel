@@ -6,7 +6,7 @@
         <button class="nav-logo" @click="navigateTo('/')">
           <span class="logo-icon">
             JD
-            <button v-if="showBadge" class="logo-badge" @click.stop="openWelcomeDialog" title="Welcome">
+            <button v-if="showBadge && !isMenuOpen" class="logo-badge" @click.stop="openWelcomeDialog" title="Welcome">
               <FontAwesomeIcon :icon="['fas', 'bell']" class="bell-icon" />
             </button>
           </span>
@@ -175,6 +175,8 @@ onMounted(() => {
     background: transparent !important;
     border-bottom: none !important;
     backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
   }
   
   &.home-nav {
@@ -503,7 +505,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 20000;
   animation: fadeIn 0.3s ease;
 }
 

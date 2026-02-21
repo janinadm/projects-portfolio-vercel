@@ -179,8 +179,7 @@ onMounted(() => {
     box-shadow: none !important;
 
     .nav-logo {
-      opacity: 0 !important;
-      pointer-events: none !important;
+      display: none !important;
     }
   }
   
@@ -609,6 +608,7 @@ onMounted(() => {
   .nav-menu {
     position: fixed !important;
     inset: 0 !important;
+    margin: 0 !important; /* Reset default ul margin to prevent top gap */
     width: 100% !important;
     height: 100dvh !important; /* Use dynamic viewport unit */
     background: rgba(0, 0, 0, 0.7) !important; /* Lighter "dark frost" transparency */

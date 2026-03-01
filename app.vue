@@ -640,12 +640,13 @@ onMounted(() => {
       font-size: 2.5rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: var(--c-text-primary);
+      color: #ffffff !important; /* Force white text for mobile menu */
       display: block;
       padding: 1rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Add shadow for better legibility */
       
       &.router-link-active {
-        color: var(--c-accent);
+        color: var(--c-accent) !important;
         &::after { display: none; }
       }
     }

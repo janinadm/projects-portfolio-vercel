@@ -165,12 +165,16 @@ useScrollReveal();
     );
     
     @media (max-width: 768px) {
+      /* Keep the same gradient direction/intensity as desktop, or adjust for vertical layout */
       background: linear-gradient(
-        0deg, 
-        transparent 0%, 
-        rgba(0, 0, 0, 0.5) 50%, 
-        rgba(0, 0, 0, 0.85) 80%
+        180deg, 
+        transparent 0%,
+        rgba(0, 0, 0, 0.1) 50%, 
+        rgba(0, 0, 0, 0.6) 100%
       );
+      /* Or to match desktop exactly (which might look weird vertically): 
+         background: inherit; 
+      */
     }
   }
 

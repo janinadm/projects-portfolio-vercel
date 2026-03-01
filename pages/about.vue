@@ -332,53 +332,71 @@ useScrollReveal();
 .personal-gallery {
   margin-top: 3rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
   padding: 0 1rem;
-}
-
-.gallery-image {
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease;
-  filter: grayscale(20%);
-  aspect-ratio: 3/4;
-  display: block;
-
-  &:hover {
-    transform: translateY(-5px);
-    filter: grayscale(0%);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  }
 }
 
 .image-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  background-color: var(--glass-bg);
   min-height: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
   
+  /* Fading Effect (Match Hero) */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%; /* Covers bottom 40% of image */
+    background: linear-gradient(to bottom, transparent, var(--c-bg-primary));
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Hover Effects */
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    
+    /* Slightly reduce fade on hover to see more image, or keep it */
+    &::after {
+      opacity: 0.8; 
+    }
+
+    .gallery-image {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
+  }
+
   &.no-image {
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px dashed var(--c-border);
+    background-color: var(--glass-bg);
     
-    img {
-      display: none;
-    }
-    
-    .placeholder-text {
-      display: block;
-    }
+    img { display: none; }
+    .placeholder-text { display: block; }
+    &::after { display: none; }
   }
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.6s ease;
+  filter: grayscale(20%); 
+  display: block;
 }
 
 .placeholder-text {

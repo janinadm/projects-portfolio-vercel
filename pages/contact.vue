@@ -469,6 +469,6 @@ const handleSubmit = async () => {
 }
 
 .contact-page {
-  padding-top: 6rem; /* Space for navbar */
+  padding-top: 10rem; /* Space for navbar */
 }
 </style>

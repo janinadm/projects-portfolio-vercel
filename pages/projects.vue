@@ -218,6 +218,7 @@ useScrollReveal();
 @media (max-width: 768px) {
   .projects-page {
     padding: 1rem;
+    padding-top: 6rem;
   }
 
   .projects-hero h1 {

@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <NuxtRouteAnnouncer />
-    <nav class="navbar" :class="{ 'home-nav': $route.path === '/', 'menu-open': isMenuOpen }">
+    <nav class="navbar home-nav" :class="{ 'menu-open': isMenuOpen }">
       <div class="nav-container">
         <button class="nav-logo" @click="navigateTo('/')">
           <span class="logo-icon">

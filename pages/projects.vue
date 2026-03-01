@@ -7,8 +7,8 @@
 
     <div class="projects-grid">
       <div v-for="project in projectsList" :key="project.slug" class="project-card reveal">
-        <div class="project-image-placeholder" :style="project.image && project.slug === 'breviolink' ? { backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'top center' } : {}">
-          <span v-if="!project.image || project.slug !== 'breviolink'">{{ project.icon }}</span>
+        <div class="project-image-placeholder" :style="project.image && ['breviolink', 'auradesk'].includes(project.slug) ? { backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'top center' } : {}">
+          <span v-if="!project.image || !['breviolink', 'auradesk'].includes(project.slug)">{{ project.icon }}</span>
         </div>
         <div class="project-content">
           <h3>{{ $t(project.title) }}</h3>

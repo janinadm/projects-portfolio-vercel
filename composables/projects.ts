@@ -25,6 +25,18 @@ export const personalProjects: PersonalProject[] = [
     repoUrl: ''
   },
   {
+    slug: 'auradesk',
+    icon: '🎧',
+    title: 'projects.auradesk.title',
+    summary: 'projects.auradesk.summary',
+    description: 'projects.auradesk.description',
+    technologies: ['Nuxt 3', 'Vue 3', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Google Gemini AI', 'Node.js', 'Vercel'],
+    highlights: 'projects.auradesk.highlights' as any,
+    image: '/images/projects/auradesk.png',
+    liveUrl: 'https://auradesk.vercel.app',
+    repoUrl: ''
+  },
+  {
     slug: 'headless-ecommerce-storefront',
     icon: '🛍️',
     title: 'projects.ecommerce.title',

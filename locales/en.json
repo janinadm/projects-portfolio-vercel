@@ -92,6 +92,9 @@
         "breviolinkTitle": "BrevioLink · Personal SaaS Project",
         "breviolinkMeta": "November 2025 – Present · Side project",
         "breviolinkDesc": "Built a complete URL shortener and bio pages SaaS from scratch. Implemented authentication with Supabase, real-time analytics, Stripe subscriptions, and Row Level Security. Deployed on Vercel.",
+        "auradeskTitle": "AuraDesk · Personal SaaS Project",
+        "auradeskMeta": "February 2026 – Present · Side project",
+        "auradeskDesc": "Built a full-featured customer support SaaS with AI-driven ticket classification (sentiment, priority, category), suggested replies powered by Google Gemini, real-time updates via Supabase, SLA monitoring, knowledge base, customer portal, and team management with role-based access. Includes Google OAuth login. Deployed on Vercel.",
         "howIWork": "How I Work",
         "howIWorkIntro": "Clean code, clear communication, and user focus. I rely on:",
         "howIWorkList": [
@@ -122,6 +125,20 @@
                 "Bio Pages with themes",
                 "Stripe integration for Pro tier",
                 "Row Level Security (RLS) protection"
+            ]
+        },
+        "auradesk": {
+            "title": "AuraDesk",
+            "summary": "AI-powered customer support platform with ticket triage, Gemini replies, and SLA monitoring.",
+            "description": "A full-featured SaaS application for customer support teams. Includes AI-driven ticket classification (sentiment, priority, category), suggested replies powered by Google Gemini, real-time updates via Supabase, SLA monitoring, knowledge base, customer portal, and team management with role-based access.",
+            "highlights": [
+                "AI ticket classification with sentiment & priority analysis",
+                "Suggested replies powered by Google Gemini",
+                "Real-time updates via Supabase",
+                "SLA engine and monitoring dashboard",
+                "Knowledge base & customer portal",
+                "Team management with role-based access (RBAC)",
+                "Google OAuth authentication"
             ]
         },
         "ecommerce": {

@@ -96,6 +96,21 @@
           <p>{{ $t('about.breviolinkDesc') }}</p>
         </div>
       </div>
+
+      <!-- AuraDesk -->
+      <div class="experience-item">
+        <div class="company-logo">
+          <div class="fallback-logo">AD</div>
+        </div>
+        <div class="experience-content">
+          <h3>{{ $t('about.auradeskTitle') }}</h3>
+          <p class="role-meta">
+            {{ $t('about.auradeskMeta') }} · 
+            <a href="https://auradesk.vercel.app" target="_blank" rel="noopener">auradesk.vercel.app</a>
+          </p>
+          <p>{{ $t('about.auradeskDesc') }}</p>
+        </div>
+      </div>
     </section>
 
     <section class="about-section reveal">

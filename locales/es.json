@@ -92,6 +92,9 @@
         "breviolinkTitle": "BrevioLink · Proyecto SaaS Personal",
         "breviolinkMeta": "Noviembre 2025 – Presente · Proyecto personal",
         "breviolinkDesc": "Construí un acortador de URLs y páginas bio SaaS completo desde cero. Implementé autenticación con Supabase, analíticas en tiempo real, suscripciones Stripe y Row Level Security. Desplegado en Vercel.",
+        "auradeskTitle": "AuraDesk · Proyecto SaaS Personal",
+        "auradeskMeta": "Febrero 2026 – Presente · Proyecto personal",
+        "auradeskDesc": "Construí una plataforma SaaS completa de soporte al cliente con clasificación de tickets por IA (sentimiento, prioridad, categoría), respuestas sugeridas con Google Gemini, actualizaciones en tiempo real vía Supabase, monitorización de SLAs, base de conocimiento, portal de clientes y gestión de equipos con control de acceso por roles. Incluye login con Google OAuth. Desplegado en Vercel.",
         "howIWork": "Cómo Trabajo",
         "howIWorkIntro": "Código limpio, comunicación clara y foco en el usuario. Me apoyo en:",
         "howIWorkList": [
@@ -122,6 +125,20 @@
                 "Páginas Bio con temas personalizables",
                 "Integración de Stripe para nivel Pro",
                 "Protección con Row Level Security (RLS)"
+            ]
+        },
+        "auradesk": {
+            "title": "AuraDesk",
+            "summary": "Plataforma de soporte al cliente con IA, triage de tickets, respuestas Gemini y monitorización SLA.",
+            "description": "Una aplicación SaaS completa para equipos de soporte al cliente. Incluye clasificación de tickets por IA (sentimiento, prioridad, categoría), respuestas sugeridas con Google Gemini, actualizaciones en tiempo real vía Supabase, monitorización de SLAs, base de conocimiento, portal de clientes y gestión de equipos con control de acceso por roles.",
+            "highlights": [
+                "Clasificación de tickets con IA: sentimiento y prioridad",
+                "Respuestas sugeridas con Google Gemini",
+                "Actualizaciones en tiempo real vía Supabase",
+                "Motor de SLA y panel de monitorización",
+                "Base de conocimiento y portal de clientes",
+                "Gestión de equipos con control de acceso por roles (RBAC)",
+                "Autenticación con Google OAuth"
             ]
         },
         "ecommerce": {

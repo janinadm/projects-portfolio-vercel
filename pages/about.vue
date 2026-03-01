@@ -106,7 +106,7 @@
           <h3>{{ $t('about.auradeskTitle') }}</h3>
           <p class="role-meta">
             {{ $t('about.auradeskMeta') }} · 
-            <a href="https://auradesk.vercel.app" target="_blank" rel="noopener">auradesk.vercel.app</a>
+            <a href="https://task-automatizator-project.vercel.app/" target="_blank" rel="noopener">auradesk.vercel.app</a>
           </p>
           <p>{{ $t('about.auradeskDesc') }}</p>
         </div>

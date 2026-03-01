@@ -179,20 +179,18 @@ onMounted(() => {
   }
   
   &.home-nav {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(var(--c-bg-primary-rgb), 0.9) 0%, transparent 100%);
     border-bottom: none;
     position: absolute;
     width: 100%;
     padding-top: 1rem;
     
     .nav-logo {
-      color: #ffffff;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      color: var(--c-text-primary);
     }
     
     .nav-link {
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      color: var(--c-text-primary);
       
       &:hover, &.router-link-active {
         color: var(--c-accent);

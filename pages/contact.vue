@@ -1,6 +1,10 @@
 <template>
   <div class="contact-page">
     <div class="contact-hero reveal">
+      <div class="contact-avatar">
+        <img src="/images/personal/profile.png" alt="Janina" onerror="this.onerror=null;this.parentElement.classList.add('no-image')" />
+        <span class="avatar-fallback">JD</span>
+      </div>
       <h1>{{ $t('contact.title') }}</h1>
       <p>{{ $t('contact.subtitle') }}</p>
     </div>
@@ -187,6 +191,47 @@ const handleSubmit = async () => {
 .contact-hero {
   margin-bottom: 4rem;
   text-align: center;
+
+  .contact-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    border: 3px solid var(--c-accent);
+    box-shadow: 0 4px 20px rgba(224, 168, 46, 0.25);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 28px rgba(224, 168, 46, 0.35);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-fallback {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--c-accent) 0%, var(--c-accent-hover) 100%);
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.no-image {
+      img { display: none; }
+      .avatar-fallback { display: flex; }
+    }
+  }
 
   h1 {
     font-size: 3rem;

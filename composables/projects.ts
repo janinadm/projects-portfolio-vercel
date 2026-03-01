@@ -33,7 +33,7 @@ export const personalProjects: PersonalProject[] = [
     technologies: ['Nuxt 3', 'Vue 3', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Google Gemini AI', 'Node.js', 'Vercel'],
     highlights: 'projects.auradesk.highlights' as any,
     image: '/images/projects/auradesk.png',
-    liveUrl: 'https://auradesk.vercel.app',
+    liveUrl: 'https://task-automatizator-project.vercel.app/',
     repoUrl: ''
   },
   {
